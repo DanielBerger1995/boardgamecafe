@@ -51,8 +51,8 @@ function appendBoardGamesPopular(boardGames) {
     <div>
         <h2>${boardGame.name}</h2>
         <br>
-        <div class="icontext"> <img src="/images/players.svg" class="icons">${boardGame.players} players </div>
-      <div class="icontext">  <img src="/images/clock.svg" class="icons"> ${boardGame.time}</div>
+        <div class="icontext"> <img src="images/players.svg" class="icons">${boardGame.players} players </div>
+      <div class="icontext">  <img src="images/clock.svg" class="icons"> ${boardGame.time}</div>
       </div>
        
 
@@ -93,8 +93,8 @@ function appendBoardGamesPlayers(boardGames) {
     <div>
         <h2>${boardGame.name}</h2>
         <br>
-        <div class="icontext"> <img src="/images/players.svg" class="icons">${boardGame.players} players </div>
-      <div class="icontext">  <img src="/images/clock.svg" class="icons"> ${boardGame.time}</div>
+        <div class="icontext"> <img src="images/players.svg" class="icons">${boardGame.players} players </div>
+      <div class="icontext">  <img src="images/clock.svg" class="icons"> ${boardGame.time}</div>
       </div>
        
 
