@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/1e6b508437.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="opacityCover" onclick="closeDetails()"></div>
+    <div class="all">
+
+        <button onclick="place1();place11()">Place 1</button>
+        <button onclick="place2()">Place 2</button>
+        <button onclick="strategy()">Strategy</button>
+        <br>
+        <br>
+        <section class="dropdownbar">
+            <div class="barsplit">
+                <div>
+                    <div class="dropdown">
+                        <button class="dropbtn">Location <i class="fas fa-chevron-down"></i></button>
+                        <div class="dropdown-content">
+                            <a href="#">Vestergade</a>
+                            <a href="#">Fredensgade</a>
+
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">Genre <i class="fas fa-chevron-down"></i></button>
+                        <div class="dropdown-content">
+                            <a href="#">Strategy</a>
+                            <a href="#">Role Playing</a>
+                            <a href="#">Economic</a>
+                            <a href="#">Family</a>
+                            <a href="#">Party</a>
+                            <a href="#">Cards</a>
+                            <a href="#">Quiz</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">Players <i class="fas fa-chevron-down"></i></button>
+                        <div class="dropdown-content">
+                            <a href="#">1 player</a>
+                            <a href="#">2-3 players</a>
+                            <a href="#">3-6 players</a>
+                            <a href="#">6+ players</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">Duration <i class="fas fa-chevron-down"></i></button>
+                        <div class="dropdown-content">
+                            <a href="#">Less than 30 mins</a>
+                            <a href="#">30-60 mins</a>
+                            <a href="#">More than 30 mins</a>
+                        </div>
+                    </div>
+                </div>
+
+                <input type="search" placeholder="Search" onkeyup="search(this.value)">
+
+            </div>
+        </section>
+        <section>
+            <h2>POPULAR GAMES</h2>
+
+            <div class="wrapper">
+                <div class="arrowright" id="slideNext"><i id="iii" class="fas fa-chevron-right"></i></div>
+                <div class="arrowleft" id="slidePrev"><i id="iii" class="fas fa-chevron-left"></i></div>
+                <div id="boardGame-popular" class="grid-container popular">
+
+                </div>
+            </div>
+        </section>
+        <div class="specificBoardGame" id="select-boardGame">
+
+        </div>
+        <section>
+            <h2>NEWEST GAMES</h2>
+            <div class="wrapper">
+                <div class="arrowright" id="slideNext1"><i id="iii" class="fas fa-chevron-right"></i></div>
+                <div class="arrowleft" id="slidePrev1"><i id="iii" class="fas fa-chevron-left"></i></div>
+                <div id="boardGame-players" class="grid-container players">
+
+                </div>
+            </div>
+
+        </section>
+    </div>
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-firestore.js"></script>
+
+    <!-- firebase config js file -->
+    <script src="/js/firebase_config.js"></script>
+    <!-- main js file -->
+    <script src="/js/app.js"></script>
+</body>
+
+</html>
