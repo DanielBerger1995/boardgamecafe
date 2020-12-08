@@ -1,3 +1,40 @@
+"use strict";
+
+// ========== GLOBAL VARIABLES ========== //
+
+const _videoGameRef = _db.collection("videogames");
+let _videoGames;
+
+
+//ACTION SHOOTER SOLO//
+_videoGameRef.where("genre", "==", "ass").onSnapshot(snapshotData => {
+    _videoGames = [];
+    snapshotData.forEach(doc => {
+        let videoGame = doc.data();
+        videoGame.id = doc.id;
+        _videoGames.push(videoGame);
+    });
+
+});
+
+
+// append videoGames to the DOM
+function appendVideoGames(videoGames) {
+    let htmlTemplate = "";
+    for (let videoGame of videoGames) {
+        htmlTemplate += `
+    <article>
+      <img src="${videoGame.img}">
+        <h2>${videoGame.name}</h2>
+      </div>
+      </article>
+    `;
+    }
+    document.querySelector('#videoGame-container').innerHTML = htmlTemplate;
+}
+
+
+
 /* REGISTERING GSAP PLUGINS */
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
@@ -11,7 +48,7 @@ gsap.from(".line-one", {
         trigger: ".circle-one",
         end: "top center",
         toggleActions: "restart pause reverse pause",
-        markers: true,
+        markers: false,
         scrub: true
     },
     scaleY: 0,
@@ -26,7 +63,7 @@ gsap.from(".circle-one", {
         start: "top center",
         end: "bottom center",
         toggleActions: "restart pause reverse pause",
-        markers: true,
+        markers: false,
         scrub: true
     },
     scaleY: 0,
@@ -45,7 +82,7 @@ gsap.from(".line-two", {
         trigger: ".circle-two",
         end: "top center",
         toggleActions: "restart pause reverse pause",
-        markers: true,
+        markers: false,
         scrub: true
     },
     scaleY: 0,
@@ -59,7 +96,7 @@ gsap.from(".circle-two", {
         trigger: "#sec3",
         end: "top center",
         toggleActions: "restart pause reverse pause",
-        markers: true,
+        markers: false,
         scrub: true
     },
     scaleY: 0,
@@ -141,3 +178,4 @@ function btn1bClick() {
         document.querySelectorAll('.btn1a, .btn1c').forEach(el => el.style.display = "none")
     }, 750);
 }
+
