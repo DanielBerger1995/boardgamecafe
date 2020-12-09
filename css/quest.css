@@ -1,12 +1,18 @@
+/* SMALL RESET */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* SMOOTH SCROLLING */
+
 html {
     scroll-behavior: smooth;
 }
+
+/* VIDEO GAMES FROM FIREBASE GO HERE */
 
 #videoGame-container {
     width: 100vw;
@@ -16,7 +22,7 @@ html {
 }
 
 #videoGame-container img {
-    max-width: 200px;
+    max-width: 220px;
 }
 
 main {
@@ -40,9 +46,8 @@ main {
 }
 #sec2 {
     width: 100vw;
-    display: flex;
-    justify-content: space-around;
 }
+
 #sec3 {
     width: 100vw;
     display: flex;
@@ -58,6 +63,8 @@ main {
 a {
     text-decoration: none;
 }
+
+/* BUTTONS FADE IN ANIMATION */
 
 .appearing {
     animation: hello2 750ms forwards;
@@ -80,6 +87,8 @@ a {
     }
 }
 
+/* BUTTONS FADE OUT ANIMATION */
+
 .disappearing {
     animation: hello 750ms forwards;
 
@@ -98,6 +107,8 @@ a {
     }
 }
 
+/* LINE STYLING */
+
 .line {
     width: 100%;
     max-width: 6px;
@@ -107,6 +118,8 @@ a {
     display: block;
     background-color: #ffb000;
   }
+
+/* QUESTION BOX STYLING */
 
 .circle {
     width: 100%;
@@ -133,7 +146,18 @@ a {
     transform: translate(-50%, -50%);
 }
 
-  button {
+/* BUTTON CONTAINERS */
+
+#aBtns,
+#sBtns,
+#rBtns {
+    display: flex;
+    justify-content: space-around;
+}
+
+/* BUTTON STYLING */
+
+button {
     margin-top: 64px;
     transition: all 3s;
     width: 250px;
@@ -150,7 +174,7 @@ a {
     border: 3px solid #ffb000;
     box-shadow: inset 0px 0px 5px 3px rgba(1,1,1,0.3);
     position: relative;
-  }
+}
   
 button:hover{
     background: radial-gradient(circle, #e52b2b, #8b0000);

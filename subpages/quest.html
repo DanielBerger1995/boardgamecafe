@@ -14,7 +14,7 @@
         <section id="sec0"></section>
         <span class="circle circle-zero"><p>What's your favorite genre?</p></span>
         <section id="sec1">
-            <button class="btn1 btn1a" onclick="btn1aClick()">
+            <button class="btn1 btn1a" onclick="btn1aClick();myFunction()">
                 ACTION
             </button>
             <button class="btn1 btn1b" onclick="btn1bClick()">
@@ -27,12 +27,30 @@
             <span class="line line-one"></span>
             <span class="circle circle-one"><p>Do you prefer to go solo or team up?</p></span>
         <section id="sec2">
+            <div id="aBtns">
+            <button class="btn2 btn2a" onclick="btn2aClick();appendVideoGames(_actionSolo)">
+                SOLO
+            </button>
+            <button class="btn2 btn2b" onclick="btn2bClick();appendVideoGames(_actionTeam)">
+                TEAM
+            </button>
+            </div>
+            <div id="sBtns">
             <button class="btn2 btn2a" onclick="btn2aClick();appendVideoGames(_videoGames)">
                 SOLO
             </button>
             <button class="btn2 btn2b" onclick="btn2bClick()">
                 TEAM
             </button>
+            </div>
+            <div id="rBtns">
+            <button class="btn2 btn2a" onclick="btn2aClick();appendVideoGames(_videoGames)">
+                SOLO
+            </button>
+            <button class="btn2 btn2b" onclick="btn2bClick()">
+                TEAM
+            </button>
+            </div>
         </section>
         <span class="line line-two"></span>
             <span class="circle circle-two"><p>What game do you like the most?</p></span>
