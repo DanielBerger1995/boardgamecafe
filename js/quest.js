@@ -3,14 +3,14 @@
 // ========== GLOBAL VARIABLES ========== //
 
 const _videoGameRef = _db.collection("videogames");
+const _boardGameRef = _db.collection("boardgames");
+let _game1;
 let _actionSolo;
 let _actionTeam;
 let _strategySolo;
 let _strategyTeam;
 let _roleplayingSolo;
 let _roleplayingTeam;
-
-
 
 /* ACTION SOLO */
 
@@ -20,6 +20,16 @@ _videoGameRef.where("genre", "==", "as").onSnapshot(snapshotData => {
         let videoGame = doc.data();
         videoGame.id = doc.id;
         _actionSolo.push(videoGame);
+    });
+
+});
+
+_boardGameRef.where("match", "==", "1").onSnapshot(snapshotData => {
+    _game1 = [];
+    snapshotData.forEach(doc => {
+        let boardGame = doc.data();
+        boardGame.id = doc.id;
+        _game1.push(boardGame);
     });
 
 });
@@ -91,16 +101,110 @@ function appendVideoGames(actionSolo) {
     for (let videoGame of actionSolo) {
         htmlTemplate += `
     <article>
-      <img src="${videoGame.img}">
-        <h2>${videoGame.name}</h2>
+    <img src="${videoGame.img}">
+    <button onclick="diceFunction()">${videoGame.name}</button>
       </div>
       </article>
     `;
     }
-    document.querySelector('#videoGame-container').innerHTML = htmlTemplate;
+    document.querySelector('#actionSolo-container').style.display = "flex";
+    document.querySelector('#actionSolo-container').innerHTML = htmlTemplate;
 }
 
+function appendBoardGames(game1) {
+    let htmlTemplate = "";
+    for (let boardGame of game1) {
+        htmlTemplate += `
+    <article>
+    <img src="${boardGame.image}">
+    <h2>${boardGame.name}</h2>
+      </div>
+      </article>
+    `;
+    }
+    document.querySelector('#lol-container').style.display = "flex";
+    document.querySelector('#lol-container').innerHTML = htmlTemplate;
+}
 
+// append videoGames to the DOM (replace actionSolo with any genre)
+function appendVideoGames2(actionSolo) {
+    let htmlTemplate = "";
+    for (let videoGame of actionSolo) {
+        htmlTemplate += `
+    <article>
+    <h2>${videoGame.name}</h2>
+      <img src="${videoGame.img}">
+      </div>
+      </article>
+    `;
+    }
+    document.querySelector('#actionTeam-container').style.display = "flex";
+    document.querySelector('#actionTeam-container').innerHTML = htmlTemplate;
+}
+
+// append videoGames to the DOM (replace actionSolo with any genre)
+function appendVideoGames3(actionSolo) {
+    let htmlTemplate = "";
+    for (let videoGame of actionSolo) {
+        htmlTemplate += `
+    <article>
+    <h2>${videoGame.name}</h2>
+      <img src="${videoGame.img}">
+      </div>
+      </article>
+    `;
+    }
+    document.querySelector('#strategySolo-container').style.display = "flex";
+    document.querySelector('#strategySolo-container').innerHTML = htmlTemplate;
+}
+
+// append videoGames to the DOM (replace actionSolo with any genre)
+function appendVideoGames4(actionSolo) {
+    let htmlTemplate = "";
+    for (let videoGame of actionSolo) {
+        htmlTemplate += `
+    <article>
+    <h2>${videoGame.name}</h2>
+      <img src="${videoGame.img}">
+      </div>
+      </article>
+    `;
+    }
+    document.querySelector('#strategyTeam-container').style.display = "flex";
+    document.querySelector('#strategyTeam-container').innerHTML = htmlTemplate;
+}
+
+// append videoGames to the DOM (replace actionSolo with any genre)
+function appendVideoGames5(actionSolo) {
+    let htmlTemplate = "";
+    for (let videoGame of actionSolo) {
+        htmlTemplate += `
+    <article>
+    <h2>${videoGame.name}</h2>
+      <img src="${videoGame.img}">
+      </div>
+      </article>
+    `;
+    }
+    document.querySelector('#roleplayingSolo-container').style.display = "flex";
+    document.querySelector('#roleplayingSolo-container').innerHTML = htmlTemplate;
+}
+
+// append videoGames to the DOM (replace actionSolo with any genre)
+function appendVideoGames6(actionSolo) {
+    let htmlTemplate = "";
+    for (let videoGame of actionSolo) {
+        htmlTemplate += `
+    <article>
+      <img src="${videoGame.img}">
+      <button>${videoGame.name}</button>
+      </div>
+      </article>
+    `;
+    }
+    document.querySelector('#roleplayingTeam-container').style.display = "flex";
+    document.querySelector('#roleplayingTeam-container').innerHTML = htmlTemplate;
+}
 
 /* REGISTERING GSAP PLUGINS */
 
@@ -112,8 +216,10 @@ gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 gsap.from(".line-one", {
     scrollTrigger: {
-        trigger: ".circle-one",
-        end: "top center",
+        trigger: "#sec1",
+        endTrigger: ".circle-one",
+        start: "center center",
+        end: "center center",
         toggleActions: "restart pause reverse pause",
         markers: false,
         scrub: true
@@ -128,9 +234,9 @@ gsap.from(".circle-one", {
     scrollTrigger: {
         trigger: "#aBtns",
         start: "top center",
-        end: "bottom center",
+        end: "center center",
         toggleActions: "restart pause reverse pause",
-        markers: true,
+        markers: false,
         scrub: true
     },
     scaleY: 0,
@@ -146,8 +252,10 @@ gsap.from(".circle-one", {
 
 gsap.from(".line-two", {
     scrollTrigger: {
-        trigger: ".circle-two",
-        end: "top center",
+        trigger: ".line-two",
+        endTrigger: ".circle-two",
+        start: "center center",
+        end: "center center",
         toggleActions: "restart pause reverse pause",
         markers: false,
         scrub: true
@@ -160,7 +268,9 @@ gsap.from(".line-two", {
 
 gsap.from(".circle-two", {
     scrollTrigger: {
-        trigger: "#sec3",
+        trigger: ".circle-two",
+        endTrigger: ".circle-two",
+        start: "bottom bottom",
         end: "top center",
         toggleActions: "restart pause reverse pause",
         markers: false,
@@ -168,7 +278,43 @@ gsap.from(".circle-two", {
     },
     scaleY: 0,
     duration: 5,
-    transformOrigin: "top right",
+    transformOrigin: "top left",
+    ease: "none"
+});
+
+
+
+/* LINE AND CIRCLE ANIMATIONS NUMBER 3 */
+
+gsap.from(".line-three", {
+    scrollTrigger: {
+        trigger: ".line-three",
+        endTrigger: ".circle-three",
+        start: "center center",
+        end: "center center",
+        toggleActions: "restart pause reverse pause",
+        markers: false,
+        scrub: true
+    },
+    scaleY: 0,
+    duration: 5,
+    transformOrigin: "left right",
+    ease: "none"
+});
+
+gsap.from(".circle-three", {
+    scrollTrigger: {
+        trigger: ".circle-three",
+        endTrigger: ".circle-three",
+        start: "bottom bottom",
+        end: "top center",
+        toggleActions: "restart pause reverse pause",
+        markers: false,
+        scrub: true
+    },
+    scaleY: 0,
+    duration: 5,
+    transformOrigin: "top left",
     ease: "none"
 });
 
@@ -251,3 +397,77 @@ function btn1bClick() {
     }, 750);
 }
 
+
+/* SLOW SCROLLING */
+
+function scrollPageTo(to, duration = 2000) {
+    const easeInOutQuad = function (t, b, c, d) {
+        t /= d / 2;
+        if (t < 1) return c / 2 * t * t + b;
+        t--;
+        return -c / 2 * (t * (t - 2) - 1) + b;
+    };
+
+    return new Promise((resolve, reject) => {
+        const element = document.scrollingElement;
+
+        if (typeof to === 'string') {
+            to = document.querySelector(to) || reject();
+        }
+        if (typeof to !== 'number') {
+            to = to.getBoundingClientRect().top + element.scrollTop;
+        }
+
+        let start = element.scrollTop,
+            change = to - start,
+            currentTime = 0,
+            increment = 20;
+
+        const animateScroll = function () {
+            currentTime += increment;
+            let val = easeInOutQuad(currentTime, start, change, duration);
+            element.scrollTop = val;
+            if (currentTime < duration) {
+                setTimeout(animateScroll, increment);
+            } else {
+                resolve();
+            }
+        };
+        animateScroll();
+    });
+}
+
+function scrollClick1() {
+    setTimeout(() => {
+        window.scrollPageTo('#anchor');
+    }, 1400);
+}
+
+function scrollClick2() {
+    setTimeout(() => {
+        window.scrollPageTo('#anchor2');
+    }, 1400);
+}
+
+function diceFunction() {
+
+    document.getElementById("bigWrapper").style.opacity = "0";
+
+    setTimeout(() => {
+        document.getElementById("bigWrapper").style.display = "none";
+    }, 1000);
+
+    setTimeout(() => {
+        document.getElementById("loader").style.opacity = "1";
+    }, 1000);
+
+    // setTimeout(() => {
+    //     document.getElementById("dice").style.opacity = "0";
+    // }, 5000);
+
+    setTimeout(() => {
+        document.getElementById("sec4").style.opacity = "1";
+    }, 5000);
+
+    appendBoardGames(_game1);
+}
