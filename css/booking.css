@@ -4,20 +4,6 @@
      box-sizing: border-box;
 }
 
-body {
-     display: flex;
-     height: 100vh;
-     width: 100%;
-     justify-content: center;
-     align-items: center;
-}
-
-.log-trigger {
-     position: absolute;
-     left: 0;
-     top: 0;
-}
-
 .booking {
      width: 370px;
      height: 500px;
@@ -28,6 +14,11 @@ body {
      position: relative;
      flex-direction: column;
      overflow: hidden;
+     position: fixed;
+     z-index: 2;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
 }
 
 .booking.active {
@@ -43,6 +34,8 @@ body {
      position: absolute;
      top: 0;
      left: 0;
+     background-color: #242424e5;
+     z-index: 2;
 }
 
 .firebaseui-container {
@@ -58,6 +51,25 @@ body {
      width: 100%;
      height: 20%;
      box-shadow: 0px 5px 5px 0px rgba(170, 25, 25, 0.3);
+     position: relative;
+}
+
+.booking header i {
+     position: absolute;
+     right: 10px;
+     top: 10px;
+     color: #AA1919;
+     font-size: 28px;
+     width: 30px;
+     height: 30px;
+     text-align: center;
+     line-height: 30px;
+     transition: all .3s ease;
+}
+
+.booking header i:hover {
+     cursor: pointer;
+     color: white;
 }
 
 .booking header h2 {
@@ -153,6 +165,10 @@ body {
      color: #F7A202;
 }
 
+.booking>div .content div label {
+     font-size: 14px;
+}
+
 .booking>div .content div:nth-of-type(5) {
      width: auto;
      height: auto;
@@ -187,4 +203,247 @@ body {
 .booking>div .content div select option:hover {
      background-color: #AA1919;
      cursor: pointer;
+}
+
+.booking>div .content .searchbar-box {
+     width: fit-content;
+     position: relative;
+     margin: 0;
+     height: fit-content;
+     width: 60%;
+     margin: 0 auto;
+     margin-top: 30px;
+}
+
+.searchbar-box i {
+     position: absolute;
+     right: 5%;
+     top: 15px;
+     transform: translateY(-50%);
+     color: white;
+     transition: all .3s ease;
+}
+
+.booking>div .content .searchbar-box input {
+     height: 30px;
+     width: 100%;
+     outline: none;
+     background-color: transparent;
+     border: 1px solid white;
+     border-radius: 10px;
+     padding-left: 10px;
+     color: white;
+     transition: all .3s ease;
+}
+
+.booking>div .content .searchbar-box input:focus {
+     border-color: #F7A202;
+}
+
+.booking>div .content .searchbar-box input:focus~i {
+     color: #F7A202;
+}
+
+.booking>div .content .searchbar-box .search-results {
+     position: absolute;
+     width: calc(100% - 20px);
+     height: 0;
+     background-color: rgba(255, 255, 255, 0.2);
+     margin: 0;
+     left: 10px;
+     overflow: hidden;
+
+}
+
+.booking>div .content .searchbar-box .search-results .result {
+     width: 100%;
+     margin: 0;
+     border-bottom: 1px solid#F7A202;
+     height: fit-content;
+}
+
+.booking>div .content .searchbar-box .search-results .result:hover {
+     cursor: pointer;
+}
+
+.booking>div .content .searchbar-box .search-results .result p {
+     width: 100%;
+     color: white;
+     font-size: 14px;
+     padding: 5px;
+}
+
+.booking>div .content .searchbar-box input:focus~.search-results {
+     height: fit-content;
+}
+
+.booking>div .content .searchbar-box .search-results .result p {
+     width: 100%;
+}
+
+.booking>div:nth-of-type(3) .content {
+     display: flex;
+     flex-direction: column;
+}
+
+.booking>div .content .gameresult-box {
+     width: fit-content;
+     height: fit-content;
+     margin: 0;
+     width: 30%;
+     margin: 0 auto;
+     margin-top: 30px;
+}
+
+.booking>div .content .gameresult-box h4 {
+     text-align: center;
+}
+
+.booking>div .content .gameresult-box img {
+     width: 100%;
+     object-fit: cover;
+     object-position: center;
+     height: 80px;
+}
+
+nav {
+     width: 100%;
+     height: 3vh;
+     background-color: #242424;
+     display: flex;
+     justify-content: flex-end;
+     align-items: center;
+     font-family: 'Poppins', sans-serif;
+}
+
+nav .account-details {
+     display: flex;
+     margin-right: 25px;
+     margin-left: 10px;
+}
+
+.account-details p {
+     color: rgba(255, 255, 255, 0.6);
+     margin-right: 10px;
+     line-height: 3vh;
+}
+
+.account-details p:hover {
+     cursor: default;
+}
+
+.account-details button {
+     background-color: transparent;
+     outline: none;
+     border: none;
+     color: #F7A202;
+     margin-left: 5px;
+     line-height: 3vh;
+     transition: all .2s ease;
+}
+
+.account-details button:hover {
+     color: #AA1919;
+     cursor: pointer;
+}
+
+.account-details button:hover i {
+     color: #AA1919;
+     cursor: pointer;
+}
+
+.account-details i {
+     color: #F7A202;
+     line-height: 3vh;
+     padding-right: 5px;
+     transition: all .2s ease;
+}
+
+.bgi-booking {
+     width: 100%;
+     height: 97vh;
+     position: relative;
+}
+
+.bgi-booking img {
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+     object-position: center top;
+}
+
+.bgi-booking .gradient {
+     width: 100%;
+     height: 30vh;
+     background: linear-gradient(180deg, #24242400 0%, #242424 95%, #242424 100%);
+     position: absolute;
+     bottom: 0;
+     left: 0;
+}
+
+.booking-table-box {
+     width: 370px;
+     height: 370px;
+     border: 5px solid white;
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     border-radius: 5px;
+     transform: translate(-50%, -50%);
+     font-family: 'Poppins', sans-serif;
+     display: flex;
+     flex-direction: column;
+     justify-content: space-between;
+     align-items: center;
+}
+
+.booking-table-box h2 {
+     text-align: center;
+     width: 80%;
+     font-size: 26px;
+     color: white;
+     padding-top: 60px;
+}
+
+.booking-table-box button {
+     width: 100%;
+     height: 50px;
+     outline: none;
+     border: none;
+     font-size: 20px;
+     font-weight: 600;
+     transition: all .3s ease;
+     background-color: #fff;
+}
+
+.booking-table-box button:hover {
+     cursor: pointer;
+     box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+#open_tables {
+     width: 100%;
+     background-color: #242424;
+     font-family: 'Poppins', sans-serif;
+}
+
+#open_tables h3 {
+     color: white;
+     padding-top: 100px;
+     padding-left: 60px;
+     font-size: 30px;
+}
+
+.open_tables_container {
+     width: 100%;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+}
+
+.open-table-box {
+     width: 100px;
+     height: 100px;
+     background-color: #fff;
+     margin: 50px;
 }
