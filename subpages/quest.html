@@ -14,7 +14,7 @@
         <section id="sec0"></section>
         <span class="circle circle-zero"><p>What's your favorite genre?</p></span>
         <section id="sec1">
-            <button class="btn1 btn1a" onclick="btn1aClick();myFunction()">
+            <button class="btn1 btn1a" onclick="btn1aClick();scrollClick1();">
                 ACTION
             </button>
             <button class="btn1 btn1b" onclick="btn1bClick()">
@@ -24,42 +24,52 @@
                 ROLE-PLAYING
             </button>
         </section>
-            <span class="line line-one"></span>
-            <span class="circle circle-one"><p>Do you prefer to go solo or team up?</p></span>
+        <span class="line line-one"></span>
+        <span class="circle circle-one"><p>Do you prefer to go solo or team up?</p></span>
+        </div>
         <section id="sec2">
             <div id="aBtns">
-            <button class="btn2 btn2a" onclick="btn2aClick();appendVideoGames(_actionSolo)">
+            <button class="btn2 btn2a" onclick="btn2aClick();appendVideoGames(_actionSolo);scrollClick2();">
                 SOLO
             </button>
-            <button class="btn2 btn2b" onclick="btn2bClick();appendVideoGames(_actionTeam)">
+            <button class="btn2 btn2b" onclick="btn2bClick();appendVideoGames2(_actionTeam)">
                 TEAM
             </button>
             </div>
             <div id="sBtns">
-            <button class="btn2 btn2a" onclick="btn2aClick();appendVideoGames(_videoGames)">
+            <button class="btn2 btn2a" onclick="btn2aClick();appendVideoGames3(_strategySolo)">
                 SOLO
             </button>
-            <button class="btn2 btn2b" onclick="btn2bClick()">
+            <button class="btn2 btn2b" onclick="btn2bClick();appendVideoGames4(_strategyTeam)">
                 TEAM
             </button>
             </div>
             <div id="rBtns">
-            <button class="btn2 btn2a" onclick="btn2aClick();appendVideoGames(_videoGames)">
+            <button class="btn2 btn2a" onclick="btn2aClick();appendVideoGames5(_roleplayingSolo)">
                 SOLO
             </button>
-            <button class="btn2 btn2b" onclick="btn2bClick()">
+            <button class="btn2 btn2b" onclick="btn2bClick();appendVideoGames6(_roleplayingTeam)">
                 TEAM
             </button>
             </div>
-        </section>
-        <span class="line line-two"></span>
+            <span class="line line-two"></span>
             <span class="circle circle-two"><p>What game do you like the most?</p></span>
-        <section id="sec3">
-            <div id="videoGame-container"></div>
         </section>
+            </div>
+        <section id="sec3">
+        </section>
+            <div id="actionSolo-container"></div>
+            <div id="actionTeam-container"></div>
+            <div id="strategySolo-container"></div>
+            <div id="strategyTeam-container"></div>
+            <div id="roleplayingSolo-container"></div>
+            <div id="roleplayingTeam-container"></div>
         <span class="line line-three"></span>
             <span class="circle circle-three"><p>hello</p></span>
     </main>
+
+    <span id="anchor"></span>
+    <span id="anchor2"></span>
 
 
     <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
@@ -71,7 +81,6 @@
     <!-- firebase config js file -->
     <script src="../js/firebase_config.js"></script>
 
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollToPlugin.min.js"></script>	

@@ -6,23 +6,51 @@
     box-sizing: border-box;
 }
 
-/* SMOOTH SCROLLING */
+#anchor {
+    position: fixed;
+    top: 1150px;
+}
 
-html {
-    scroll-behavior: smooth;
+#anchor2 {
+    position: fixed;
+    top: 1000px;
 }
 
 /* VIDEO GAMES FROM FIREBASE GO HERE */
 
-#videoGame-container {
+#actionSolo-container,
+#actionTeam-container,
+#strategySolo-container,
+#strategyTeam-container,
+#roleplayingSolo-container,
+#roleplayingTeam-container {
     width: 100vw;
     height: 100vh;
-    display: flex;
+    display: none;
     justify-content: space-around;
 }
 
-#videoGame-container img {
+#actionSolo-container img, 
+#actionTeam-container img, 
+#strategySolo-container img, 
+#strategyTeam-container img, 
+#roleplayingSolo-container img, 
+#roleplayingTeam-container img {
     max-width: 220px;
+    max-height: 256px;
+}
+
+#actionTeam-container {
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    justify-content: space-around;
+    background-color: red;
+}
+
+#actionTeam-container img {
+    max-width: 220px;
+    max-height: 256px;
 }
 
 main {
@@ -36,7 +64,7 @@ main {
 
 #sec0 {
     width: 100vw;
-    height: 100vh;
+    height: 35vh;
 }
 
 #sec1 {
@@ -50,9 +78,9 @@ main {
 
 #sec3 {
     width: 100vw;
-    display: flex;
-    justify-content: space-around;
+    display: inline-block;
 }
+
 #sec4 {
     width: 100vw;
     display: flex;
@@ -112,7 +140,7 @@ a {
 .line {
     width: 100%;
     max-width: 6px;
-    height: 600px;
+    height: 800px;
     margin: 0 auto;
     position: relative;
     display: block;

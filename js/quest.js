@@ -10,8 +10,6 @@ let _strategyTeam;
 let _roleplayingSolo;
 let _roleplayingTeam;
 
-
-
 /* ACTION SOLO */
 
 _videoGameRef.where("genre", "==", "as").onSnapshot(snapshotData => {
@@ -91,16 +89,95 @@ function appendVideoGames(actionSolo) {
     for (let videoGame of actionSolo) {
         htmlTemplate += `
     <article>
+    <h2>${videoGame.name}</h2>
       <img src="${videoGame.img}">
-        <h2>${videoGame.name}</h2>
       </div>
       </article>
     `;
     }
-    document.querySelector('#videoGame-container').innerHTML = htmlTemplate;
+    document.querySelector('#actionSolo-container').style.display = "flex";
+    document.querySelector('#actionSolo-container').innerHTML = htmlTemplate;
 }
 
+// append videoGames to the DOM (replace actionSolo with any genre)
+function appendVideoGames2(actionSolo) {
+    let htmlTemplate = "";
+    for (let videoGame of actionSolo) {
+        htmlTemplate += `
+    <article>
+    <h2>${videoGame.name}</h2>
+      <img src="${videoGame.img}">
+      </div>
+      </article>
+    `;
+    }
+    document.querySelector('#actionTeam-container').style.display = "flex";
+    document.querySelector('#actionTeam-container').innerHTML = htmlTemplate;
+}
 
+// append videoGames to the DOM (replace actionSolo with any genre)
+function appendVideoGames3(actionSolo) {
+    let htmlTemplate = "";
+    for (let videoGame of actionSolo) {
+        htmlTemplate += `
+    <article>
+    <h2>${videoGame.name}</h2>
+      <img src="${videoGame.img}">
+      </div>
+      </article>
+    `;
+    }
+    document.querySelector('#strategySolo-container').style.display = "flex";
+    document.querySelector('#strategySolo-container').innerHTML = htmlTemplate;
+}
+
+// append videoGames to the DOM (replace actionSolo with any genre)
+function appendVideoGames4(actionSolo) {
+    let htmlTemplate = "";
+    for (let videoGame of actionSolo) {
+        htmlTemplate += `
+    <article>
+    <h2>${videoGame.name}</h2>
+      <img src="${videoGame.img}">
+      </div>
+      </article>
+    `;
+    }
+    document.querySelector('#strategyTeam-container').style.display = "flex";
+    document.querySelector('#strategyTeam-container').innerHTML = htmlTemplate;
+}
+
+// append videoGames to the DOM (replace actionSolo with any genre)
+function appendVideoGames5(actionSolo) {
+    let htmlTemplate = "";
+    for (let videoGame of actionSolo) {
+        htmlTemplate += `
+    <article>
+    <h2>${videoGame.name}</h2>
+      <img src="${videoGame.img}">
+      </div>
+      </article>
+    `;
+    }
+    document.querySelector('#roleplayingSolo-container').style.display = "flex";
+    document.querySelector('#roleplayingSolo-container').innerHTML = htmlTemplate;
+}
+
+// append videoGames to the DOM (replace actionSolo with any genre)
+function appendVideoGames6(actionSolo) {
+    let htmlTemplate = "";
+    for (let videoGame of actionSolo) {
+        htmlTemplate += `
+    <article>
+    <h2>${videoGame.name}</h2>
+      <img src="${videoGame.img}">
+      </div>
+      </article>
+    `;
+    }
+    document.querySelector('#roleplayingTeam-container').style.display = "flex";
+    document.querySelector('#roleplayingTeam-container').innerHTML = htmlTemplate;
+}
 
 /* REGISTERING GSAP PLUGINS */
 
@@ -128,7 +205,7 @@ gsap.from(".circle-one", {
     scrollTrigger: {
         trigger: "#aBtns",
         start: "top center",
-        end: "bottom center",
+        end: "center center",
         toggleActions: "restart pause reverse pause",
         markers: true,
         scrub: true
@@ -161,9 +238,9 @@ gsap.from(".line-two", {
 gsap.from(".circle-two", {
     scrollTrigger: {
         trigger: "#sec3",
-        end: "top center",
+        end: "bottom center",
         toggleActions: "restart pause reverse pause",
-        markers: false,
+        markers: true,
         scrub: true
     },
     scaleY: 0,
@@ -251,3 +328,66 @@ function btn1bClick() {
     }, 750);
 }
 
+// $('a[href^="#"]').on('click', function (event) {
+//     var target = $(this.getAttribute('href'));
+//     if (target.length) {
+//         event.preventDefault();
+//         $('html, body').stop().animate({
+//             scrollTop: target.offset().top
+//         }, 1000);
+//     }
+// });
+
+
+function scrollPageTo(to, duration = 2000) {
+    //t = current time
+    //b = start value
+    //c = change in value
+    //d = duration
+    const easeInOutQuad = function (t, b, c, d) {
+        t /= d / 2;
+        if (t < 1) return c / 2 * t * t + b;
+        t--;
+        return -c / 2 * (t * (t - 2) - 1) + b;
+    };
+
+    return new Promise((resolve, reject) => {
+        const element = document.scrollingElement;
+
+        if (typeof to === 'string') {
+            to = document.querySelector(to) || reject();
+        }
+        if (typeof to !== 'number') {
+            to = to.getBoundingClientRect().top + element.scrollTop;
+        }
+
+        let start = element.scrollTop,
+            change = to - start,
+            currentTime = 0,
+            increment = 20;
+
+        const animateScroll = function () {
+            currentTime += increment;
+            let val = easeInOutQuad(currentTime, start, change, duration);
+            element.scrollTop = val;
+            if (currentTime < duration) {
+                setTimeout(animateScroll, increment);
+            } else {
+                resolve();
+            }
+        };
+        animateScroll();
+    });
+}
+
+function scrollClick1() {
+    setTimeout(() => {
+        window.scrollPageTo('#anchor');
+    }, 0);
+}
+
+function scrollClick2() {
+    setTimeout(() => {
+        window.scrollPageTo('#anchor2');
+    }, 0);
+}
