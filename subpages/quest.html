@@ -10,17 +10,17 @@
 </head>
 
 <body>
-    <main>
+    <main id="bigWrapper">
         <section id="sec0"></section>
         <span class="circle circle-zero"><p>What's your favorite genre?</p></span>
         <section id="sec1">
             <button class="btn1 btn1a" onclick="btn1aClick();scrollClick1();">
                 ACTION
             </button>
-            <button class="btn1 btn1b" onclick="btn1bClick()">
+            <button class="btn1 btn1b" onclick="btn1bClick();scrollClick1();">
                 STRATEGY
             </button>
-            <button class="btn1 btn1c" onclick="btn1cClick()">
+            <button class="btn1 btn1c" onclick="btn1cClick();scrollClick1();">
                 ROLE-PLAYING
             </button>
         </section>
@@ -32,23 +32,23 @@
             <button class="btn2 btn2a" onclick="btn2aClick();appendVideoGames(_actionSolo);scrollClick2();">
                 SOLO
             </button>
-            <button class="btn2 btn2b" onclick="btn2bClick();appendVideoGames2(_actionTeam)">
+            <button class="btn2 btn2b" onclick="btn2bClick();appendVideoGames2(_actionTeam);scrollClick2();">
                 TEAM
             </button>
             </div>
             <div id="sBtns">
-            <button class="btn2 btn2a" onclick="btn2aClick();appendVideoGames3(_strategySolo)">
+            <button class="btn2 btn2a" onclick="btn2aClick();appendVideoGames3(_strategySolo);scrollClick2();">
                 SOLO
             </button>
-            <button class="btn2 btn2b" onclick="btn2bClick();appendVideoGames4(_strategyTeam)">
+            <button class="btn2 btn2b" onclick="btn2bClick();appendVideoGames4(_strategyTeam);scrollClick2();">
                 TEAM
             </button>
             </div>
             <div id="rBtns">
-            <button class="btn2 btn2a" onclick="btn2aClick();appendVideoGames5(_roleplayingSolo)">
+            <button class="btn2 btn2a" onclick="btn2aClick();appendVideoGames5(_roleplayingSolo);scrollClick2();">
                 SOLO
             </button>
-            <button class="btn2 btn2b" onclick="btn2bClick();appendVideoGames6(_roleplayingTeam)">
+            <button class="btn2 btn2b" onclick="btn2bClick();appendVideoGames6(_roleplayingTeam);scrollClick2();">
                 TEAM
             </button>
             </div>
@@ -57,20 +57,46 @@
         </section>
             </div>
         <section id="sec3">
-        </section>
             <div id="actionSolo-container"></div>
             <div id="actionTeam-container"></div>
             <div id="strategySolo-container"></div>
             <div id="strategyTeam-container"></div>
             <div id="roleplayingSolo-container"></div>
             <div id="roleplayingTeam-container"></div>
-        <span class="line line-three"></span>
-            <span class="circle circle-three"><p>hello</p></span>
+        </section>
     </main>
 
     <span id="anchor"></span>
     <span id="anchor2"></span>
 
+    <section id="loader">
+        <img src="../images/dicegif2.gif" id="dice" alt="">
+        <p>Rolling the dice...</p>
+    </section>
+
+
+    <section id="sec4">
+
+    <div id="lol-container"></div>
+            <div id="2-container"></div>
+            <div id="3-container"></div>
+            <div id="4-container"></div>
+            <div id="5-container"></div>
+            <div id="6-container"></div>
+            <div id="7-container"></div>
+            <div id="8-container"></div>
+            <div id="9-container"></div>
+            <div id="10-container"></div>
+            <div id="11-container"></div>
+            <div id="12-container"></div>
+            <div id="13-container"></div>
+            <div id="14-container"></div>
+            <div id="15-container"></div>
+            <div id="16-container"></div>
+            <div id="17-container"></div>
+            <div id="18-container"></div>
+
+    </section>
 
     <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
 

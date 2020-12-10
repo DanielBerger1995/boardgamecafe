@@ -6,6 +6,19 @@
     box-sizing: border-box;
 }
 
+body {
+    overflow: hidden;
+}
+
+#bigWrapper {
+    -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -ms-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+  position: relative;
+}
+
 #anchor {
     position: fixed;
     top: 1150px;
@@ -13,7 +26,7 @@
 
 #anchor2 {
     position: fixed;
-    top: 1000px;
+    top: 1050px;
 }
 
 /* VIDEO GAMES FROM FIREBASE GO HERE */
@@ -25,9 +38,9 @@
 #roleplayingSolo-container,
 #roleplayingTeam-container {
     width: 100vw;
-    height: 100vh;
     display: none;
     justify-content: space-around;
+    margin-top: 64px;
 }
 
 #actionSolo-container img, 
@@ -40,15 +53,25 @@
     max-height: 256px;
 }
 
-#actionTeam-container {
-    width: 100vw;
-    height: 100vh;
-    display: none;
+#actionSolo-container button, 
+#actionTeam-container button, 
+#strategySolo-container button, 
+#strategyTeam-container button, 
+#roleplayingSolo-container button, 
+#roleplayingTeam-container button {
+    display: flex;
     justify-content: space-around;
-    background-color: red;
 }
 
-#actionTeam-container img {
+#lol-container {
+    width: 100vw;
+    display: none;
+    justify-content: space-around;
+    margin-top: 64px;
+    
+}
+
+#lol-container img {
     max-width: 220px;
     max-height: 256px;
 }
@@ -79,13 +102,49 @@ main {
 #sec3 {
     width: 100vw;
     display: inline-block;
+    text-align: center;
 }
 
 #sec4 {
     width: 100vw;
-    display: flex;
-    justify-content: space-around;
+    height: 100vh;
+    position: absolute;
+    top: 0;
     background-color: #000;
+    z-index: -1;
+    opacity: 0;
+    -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -ms-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+}
+
+#loader {
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    z-index: -2;
+    opacity: 0;
+    -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -ms-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+  text-align: center;
+  color: white;
+}
+
+#dice {
+    -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -ms-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+  margin-top: 200px;
+  max-width: 200px;
 }
 
 a {
