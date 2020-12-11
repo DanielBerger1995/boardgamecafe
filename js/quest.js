@@ -5,6 +5,11 @@
 const _videoGameRef = _db.collection("videogames");
 const _boardGameRef = _db.collection("boardgames");
 let _game1;
+let _game2;
+let _game3;
+let _game4;
+let _game5;
+let _game6;
 let _actionSolo;
 let _actionTeam;
 let _strategySolo;
