@@ -18,11 +18,11 @@
     <div id="opacityCover" onclick="closeDetails()"></div>
     <div class="all">
 
-        <button onclick="place1();place11()">Place 1</button>
+        <button onclick="Vestergade(Vestergade);place11()">Place 1</button>
         <button onclick="place2()">Place 2</button>
-        <button onclick="strategy()">Strategy</button>
+        <button onclick="strategy(strategy)">Strategy</button>
         <a href="subpages/booking.html">Book table section</a>
-
+        <a href="subpages/quest.html">Quest</a>
         <br>
         <br>
 
@@ -47,17 +47,19 @@
             <div class="barsplit">
                 <div class="cake">
                     <div class="custom-select">
-                        <select>
-                            <div class="poop" onclick="Vestergade()">
+                        <select id="location">
+                            <div class="poop">
                                 <option value="0">Location</option>
-                                <option value="1">Vestergade</option>
+                                <div onclick="Vestergade()">
+                                    <option value="1">Vestergade</option>
+                                </div>
                                 <option value="2">Fredensgade</option>
 
                             </div>
                         </select>
                     </div>
                     <div class="custom-select">
-                        <select>
+                        <select id="genre">
                             <option value="0">Genre</option>
                             <option value="1">Strategy</option>
                             <option value="2">Role Playing</option>
@@ -69,7 +71,7 @@
                         </select>
                     </div>
                     <div class="custom-select">
-                        <select>
+                        <select id="players">
                             <option value="0">Players</option>
                             <option value="1">1 player</option>
                             <option value="2">2-3 players</option>
@@ -80,7 +82,7 @@
                     </div>
 
                     <div class="custom-select">
-                        <select>
+                        <select id="duration">
                             <option value="0">Duration</option>
                             <option value="1">Less than 30 mins</option>
                             <option value="2">30-60 mins</option>

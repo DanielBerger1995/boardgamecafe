@@ -283,7 +283,8 @@ function appendBoardGameDetails(id) {
        </div>
        <br>
        <h2>Available at:</h2>
-        <p>${specificBoardGame.place}</p>
+        <p>${specificBoardGame.place[`0`]}</p>
+          <p class="shelf">${specificBoardGame.place[`1`]}</p>
         <br>
        <p class="describe">${specificBoardGame.description}</p>
         </div>
@@ -308,9 +309,8 @@ function appendBoardGameDetails(id) {
 
 
 
-
 //FILTER//
-function Vestergade() {
+function Vestergade(Vestergade) {
     _boardGameRef.where("place", "array-contains", "Vestergade").onSnapshot(function (snapshotData) {
         _boardGames = [];
         snapshotData.forEach(function (doc) {
@@ -364,7 +364,7 @@ function place2() {
     });
 }
 
-function strategy() {
+function strategy(strategy) {
     _boardGameRef.where("genre", "==", "strategy").onSnapshot(function (snapshotData) {
         _boardGames = [];
         snapshotData.forEach(function (doc) {
@@ -372,8 +372,8 @@ function strategy() {
             boardGame.id = doc.id;
             _boardGames.push(boardGame);
         });
-        appendBoardGamesPlayers(_boardGames);
-        appendBoardGamesPopular(_boardGames);
+        appendBoardGamesAll(_boardGames);
+
     });
 }
 /*
@@ -472,3 +472,22 @@ function closeAllSelect(elmnt) {
 /*if the user clicks anywhere outside the select box,
 then close all select boxes:*/
 document.addEventListener("click", closeAllSelect);
+
+
+let option = document.querySelector('#location option')
+console.log(option);
+
+
+
+function Vestergade() {
+    _boardGameRef.where("place", "array-contains", "Vestergade").onSnapshot(function (snapshotData) {
+        _boardGames = [];
+        snapshotData.forEach(function (doc) {
+            let boardGame = doc.data();
+            boardGame.id = doc.id;
+            _boardGames.push(boardGame);
+        });
+
+        appendBoardGamesAll(_boardGames);
+    });
+}
