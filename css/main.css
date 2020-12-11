@@ -10,7 +10,7 @@ body {
   width: 100%;
   overflow-x: hidden;
     font-family: 'Poppins', sans-serif;
-
+line-height: 24px;
  }
 h2 {color: white;
 font-size: 14px;}
@@ -351,13 +351,19 @@ text-align: center;
 
 .specificBoardGame>article {
     display: flex;
+    
+}
+
+h2 {
+  color: #f2f3f4;
 }
 .opendetails {
     
  visibility: visible;
     z-index: 10;
-  
-   color: #ffffff;
+  font-size: 14px;
+
+   color: #f2f3f4;
     transition: 0.3s ease-in-out;
   
 }
@@ -383,6 +389,7 @@ margin: 32px;
 }
 .boardgametitle {
   font-size: 26px;
+   color: #f2f3f4;
 }
 .infowrap {
 
@@ -391,6 +398,7 @@ margin: 32px;
 }
 .describe {
   font-size: 16px;
+  
 }
 
 .custom-select {
