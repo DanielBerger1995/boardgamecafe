@@ -4,12 +4,12 @@
 
 const _videoGameRef = _db.collection("videogames");
 const _boardGameRef = _db.collection("boardgames");
-let _game1;
-let _game2;
-let _game3;
-let _game4;
-let _game5;
-let _game6;
+let _boardAs;
+let _boardAt;
+let _boardSs;
+let _boardSt;
+let _boardRs;
+let _boardRt;
 let _actionSolo;
 let _actionTeam;
 let _strategySolo;
@@ -29,12 +29,12 @@ _videoGameRef.where("genre", "==", "as").onSnapshot(snapshotData => {
 
 });
 
-_boardGameRef.where("match", "==", "1").onSnapshot(snapshotData => {
-    _game1 = [];
+_boardGameRef.where("match", "==", "as").onSnapshot(snapshotData => {
+    _boardAs = [];
     snapshotData.forEach(doc => {
         let boardGame = doc.data();
         boardGame.id = doc.id;
-        _game1.push(boardGame);
+        _boardAs.push(boardGame);
     });
 
 });
@@ -47,6 +47,16 @@ _videoGameRef.where("genre", "==", "at").onSnapshot(snapshotData => {
         let videoGame = doc.data();
         videoGame.id = doc.id;
         _actionTeam.push(videoGame);
+    });
+
+});
+
+_boardGameRef.where("match", "==", "at").onSnapshot(snapshotData => {
+    _boardAt = [];
+    snapshotData.forEach(doc => {
+        let boardGame = doc.data();
+        boardGame.id = doc.id;
+        _boardAt.push(boardGame);
     });
 
 });
@@ -100,25 +110,12 @@ _videoGameRef.where("genre", "==", "rt").onSnapshot(snapshotData => {
 });
 
 
-// append videoGames to the DOM (replace actionSolo with any genre)
-function appendVideoGames(actionSolo) {
-    let htmlTemplate = "";
-    for (let videoGame of actionSolo) {
-        htmlTemplate += `
-    <article>
-    <img src="${videoGame.img}">
-    <button onclick="diceFunction()">${videoGame.name}</button>
-      </div>
-      </article>
-    `;
-    }
-    document.querySelector('#actionSolo-container').style.display = "flex";
-    document.querySelector('#actionSolo-container').innerHTML = htmlTemplate;
-}
 
-function appendBoardGames(game1) {
+// append videoGames to the DOM (replace boardAs with other boardgame groups)
+
+function appendBoardGames(boardAs) {
     let htmlTemplate = "";
-    for (let boardGame of game1) {
+    for (let boardGame of boardAs) {
         htmlTemplate += `
     <article>
     <img src="${boardGame.image}">
@@ -131,14 +128,31 @@ function appendBoardGames(game1) {
     document.querySelector('#lol-container').innerHTML = htmlTemplate;
 }
 
+
+// append videoGames to the DOM (replace actionSolo with any genre)
+function appendVideoGames(actionSolo) {
+    let htmlTemplate = "";
+    for (let videoGame of actionSolo) {
+        htmlTemplate += `
+    <article>
+    <img src="${videoGame.img}">
+    <button onclick="diceFunction();appendBoardGames(_boardAs)">${videoGame.name}</button>
+      </div>
+      </article>
+    `;
+    }
+    document.querySelector('#actionSolo-container').style.display = "flex";
+    document.querySelector('#actionSolo-container').innerHTML = htmlTemplate;
+}
+
 // append videoGames to the DOM (replace actionSolo with any genre)
 function appendVideoGames2(actionSolo) {
     let htmlTemplate = "";
     for (let videoGame of actionSolo) {
         htmlTemplate += `
     <article>
-    <h2>${videoGame.name}</h2>
       <img src="${videoGame.img}">
+      <button onclick="diceFunction();appendBoardGames(_boardAt)">${videoGame.name}</button>
       </div>
       </article>
     `;
@@ -153,8 +167,8 @@ function appendVideoGames3(actionSolo) {
     for (let videoGame of actionSolo) {
         htmlTemplate += `
     <article>
-    <h2>${videoGame.name}</h2>
       <img src="${videoGame.img}">
+      <button onclick="diceFunction();appendBoardGames(_boardSs)">${videoGame.name}</button>
       </div>
       </article>
     `;
@@ -169,8 +183,8 @@ function appendVideoGames4(actionSolo) {
     for (let videoGame of actionSolo) {
         htmlTemplate += `
     <article>
-    <h2>${videoGame.name}</h2>
       <img src="${videoGame.img}">
+      <button onclick="diceFunction();appendBoardGames(_boardSt)">${videoGame.name}</button>
       </div>
       </article>
     `;
@@ -185,8 +199,8 @@ function appendVideoGames5(actionSolo) {
     for (let videoGame of actionSolo) {
         htmlTemplate += `
     <article>
-    <h2>${videoGame.name}</h2>
       <img src="${videoGame.img}">
+      <button onclick="diceFunction();appendBoardGames(_boardRs)">${videoGame.name}</button>
       </div>
       </article>
     `;
@@ -202,7 +216,7 @@ function appendVideoGames6(actionSolo) {
         htmlTemplate += `
     <article>
       <img src="${videoGame.img}">
-      <button>${videoGame.name}</button>
+      <button onclick="diceFunction();appendBoardGames(_boardRt)">${videoGame.name}</button>
       </div>
       </article>
     `;
@@ -473,6 +487,4 @@ function diceFunction() {
     setTimeout(() => {
         document.getElementById("sec4").style.opacity = "1";
     }, 5000);
-
-    appendBoardGames(_game1);
 }
