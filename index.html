@@ -2,9 +2,11 @@
 <html lang="en">
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
     <link rel="stylesheet" href="css/main.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
@@ -20,55 +22,11 @@
         <button onclick="place2()">Place 2</button>
         <button onclick="strategy()">Strategy</button>
         <a href="subpages/booking.html">Book table section</a>
+
         <br>
         <br>
-        <section class="dropdownbar">
-            <div class="barsplit">
-                <div>
-                    <div class="dropdown">
-                        <button class="dropbtn">Location <i class="fas fa-chevron-down"></i></button>
-                        <div class="dropdown-content">
-                            <a href="#">Vestergade</a>
-                            <a href="#">Fredensgade</a>
 
-                        </div>
-                    </div>
-                    <div class="dropdown">
-                        <button class="dropbtn">Genre <i class="fas fa-chevron-down"></i></button>
-                        <div class="dropdown-content">
-                            <a href="#">Strategy</a>
-                            <a href="#">Role Playing</a>
-                            <a href="#">Economic</a>
-                            <a href="#">Family</a>
-                            <a href="#">Party</a>
-                            <a href="#">Cards</a>
-                            <a href="#">Quiz</a>
-                        </div>
-                    </div>
-                    <div class="dropdown">
-                        <button class="dropbtn">Players <i class="fas fa-chevron-down"></i></button>
-                        <div class="dropdown-content">
-                            <a href="#">1 player</a>
-                            <a href="#">2-3 players</a>
-                            <a href="#">3-6 players</a>
-                            <a href="#">6+ players</a>
-                        </div>
-                    </div>
-                    <div class="dropdown">
-                        <button class="dropbtn">Duration <i class="fas fa-chevron-down"></i></button>
-                        <div class="dropdown-content">
-                            <a href="#">Less than 30 mins</a>
-                            <a href="#">30-60 mins</a>
-                            <a href="#">More than 30 mins</a>
-                        </div>
-                    </div>
-                </div>
-
-                <input type="search" placeholder="Search" onkeyup="search(this.value)">
-
-            </div>
-        </section>
-        <section>
+        <section class="boardgametop">
             <h2>POPULAR GAMES</h2>
 
             <div class="wrapper">
@@ -82,16 +40,62 @@
         <div class="specificBoardGame" id="select-boardGame">
 
         </div>
-        <section>
-            <h2>NEWEST GAMES</h2>
-            <div class="wrapper">
-                <div class="arrowright" id="slideNext1"><i id="iii" class="fas fa-chevron-right"></i></div>
-                <div class="arrowleft" id="slidePrev1"><i id="iii" class="fas fa-chevron-left"></i></div>
-                <div id="boardGame-players" class="grid-container players">
 
+
+
+        <section class="dropdownbar">
+            <div class="barsplit">
+                <div class="cake">
+                    <div class="custom-select">
+                        <select>
+                            <div class="poop" onclick="Vestergade()">
+                                <option value="0">Location</option>
+                                <option value="1">Vestergade</option>
+                                <option value="2">Fredensgade</option>
+
+                            </div>
+                        </select>
+                    </div>
+                    <div class="custom-select">
+                        <select>
+                            <option value="0">Genre</option>
+                            <option value="1">Strategy</option>
+                            <option value="2">Role Playing</option>
+                            <option value="3">Economic</option>
+                            <option value="4">Card</option>
+                            <option value="5">Party</option>
+                            <option value="6">Quiz</option>
+
+                        </select>
+                    </div>
+                    <div class="custom-select">
+                        <select>
+                            <option value="0">Players</option>
+                            <option value="1">1 player</option>
+                            <option value="2">2-3 players</option>
+                            <option value="3">3-6 players</option>
+                            <option value="4">6+ players</option>
+
+                        </select>
+                    </div>
+
+                    <div class="custom-select">
+                        <select>
+                            <option value="0">Duration</option>
+                            <option value="1">Less than 30 mins</option>
+                            <option value="2">30-60 mins</option>
+                            <option value="3">60+ mins</option>
+
+                        </select>
+                    </div>
                 </div>
-            </div>
 
+                <input type="search" placeholder="Search" onkeyup="search(this.value)">
+
+            </div>
+        </section>
+        <section>
+            <div id="boardGame-all" class="all-container">
         </section>
     </div>
     <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
