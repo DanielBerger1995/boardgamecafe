@@ -8,24 +8,6 @@ const _boardGameRef = _db.collection("boardgames");
 let _boardGames;
 
 
-function search(searchValue) {
-    _boardGameRef.onSnapshot(function (snapshotData) {
-        let boardGames = [];
-        snapshotData.forEach(function (doc) {
-            let boardGame = doc.data();
-            boardGame.id = doc.id;
-            boardGames.push(boardGame);
-        });
-
-        searchValue = searchValue.toLowerCase();
-        let filteredBoardGames = boardGames.filter(boardGame => boardGame.name.toLowerCase().includes(searchValue));
-
-        console.log(filteredBoardGames);
-
-        appendBoardGamesPopular(filteredBoardGames);
-    });
-};
-
 
 //RATING//
 _boardGameRef.orderBy("rating", "desc").limit(15).onSnapshot(snapshotData => {
@@ -50,7 +32,9 @@ function appendBoardGamesPopular(boardGames) {
       <div class="details">
     <div>
         <h2>${boardGame.name}</h2>
+        
         <br>
+        <h3>${boardGame.place}</h3>
         <div class="icontext"> <img src="images/players.svg" class="icons">${boardGame.players} players </div>
       <div class="icontext">  <img src="images/clock.svg" class="icons"> ${boardGame.time}</div>
       </div>
@@ -68,28 +52,50 @@ function appendBoardGamesPopular(boardGames) {
     document.querySelector('#boardGame-popular').innerHTML = htmlTemplate;
 }
 
+//SEARCH//
+function search(searchValue) {
+    _boardGameRef.onSnapshot(function (snapshotData) {
+        let boardGames = [];
+        snapshotData.forEach(function (doc) {
+            let boardGame = doc.data();
+            boardGame.id = doc.id;
+            boardGames.push(boardGame);
+        });
 
-//PLAYERS//
-_boardGameRef.orderBy("players").limit(15).onSnapshot(snapshotData => {
+        searchValue = searchValue.toLowerCase();
+        let filteredBoardGames = boardGames.filter(boardGame => boardGame.name.toLowerCase().includes(searchValue));
+
+        console.log(filteredBoardGames);
+
+        appendBoardGamesAll(filteredBoardGames);
+    });
+};
+
+
+
+//ALL//
+
+
+_boardGameRef.orderBy("rating", "desc").limit(30).onSnapshot(snapshotData => {
     _boardGames = [];
     snapshotData.forEach(doc => {
         let boardGame = doc.data();
         boardGame.id = doc.id;
         _boardGames.push(boardGame);
     });
-    appendBoardGamesPlayers(_boardGames);
+    appendBoardGamesAll(_boardGames);
 
 });
 
 
 
-function appendBoardGamesPlayers(boardGames) {
+function appendBoardGamesAll(boardGames) {
     let htmlTemplate = "";
     for (let boardGame of boardGames) {
         htmlTemplate += `
-  <a href="#select-boardGame" onclick="appendBoardGameDetails('${boardGame.id}');openDetails()"> <article>
+  <a href="#select-boardGame" onclick="appendBoardGameDetails('${boardGame.id}');openDetails()"> <article class="allgames_wrapper">
       <img src="${boardGame.image}">
-      <div class="details">
+      <div class="details2">
     <div>
         <h2>${boardGame.name}</h2>
         <br>
@@ -107,7 +113,7 @@ function appendBoardGamesPlayers(boardGames) {
       </article></a>
     `;
     }
-    document.querySelector('#boardGame-players').innerHTML = htmlTemplate;
+    document.querySelector('#boardGame-all').innerHTML = htmlTemplate;
 }
 
 
@@ -116,7 +122,7 @@ function appendBoardGamesPlayers(boardGames) {
 let nextBtn = document.querySelector('#slideNext');
 let prevBtn = document.querySelector('#slidePrev');
 let slider = document.querySelector('#boardGame-popular');
-let slideWidth = 90;
+let slideWidth = 92;
 
 // Slider initial margin
 slider.style.marginLeft = "0vw";
@@ -145,36 +151,6 @@ prevBtn.onclick = function () {
 }
 
 
-let nextBtn1 = document.querySelector('#slideNext1');
-let prevBtn1 = document.querySelector('#slidePrev1');
-let slider1 = document.querySelector('#boardGame-players');
-let slideWidth1 = 90;
-
-// Slider initial margin
-slider1.style.marginLeft = "0vw";
-
-function check1() {
-    if (slider1.style.marginLeft >= "0vw") {
-        prevBtn1.style.display = "none";
-    } else if (slider1.style.marginLeft <= "-200vw") {
-        nextBtn1.style.display = "none";
-    } else {
-        nextBtn1.style.display = "inline-block";
-        prevBtn1.style.display = "inline-block";
-    }
-}
-
-window.onload = check1(); // Check the margins when the page is loaded
-
-nextBtn1.onclick = function () {
-    slider1.style.marginLeft = (parseInt(slider1.style.marginLeft, 0) - slideWidth1) + 'vw';
-    check1();
-}
-
-prevBtn1.onclick = function () {
-    slider1.style.marginLeft = (parseInt(slider1.style.marginLeft, 0) + slideWidth1) + 'vw';
-    check1();
-}
 
 
 /*
@@ -288,11 +264,33 @@ function appendBoardGameDetails(id) {
          
             
             
-                <h2>${specificBoardGame.name}</h2>
-               
+             
+               <div class="details3">
+    <div class="infowrap">
+    <div class="leftside">
+        <h2 class="boardgametitle">${specificBoardGame.name}</h2>
+        <br>
+        <div class="icontext"> <img src="images/players.svg" class="icons">${specificBoardGame.players} players </div>
+      <div class="icontext">  <img src="images/clock.svg" class="icons"> ${specificBoardGame.time}</div>
+      </div>
+       
+
+        <div class="rightside">
+      <div class="genre"> <p>${specificBoardGame.genre}</p></div>
+      <br>
+       <div class="rating">${specificBoardGame.rating}</div>
+       </div>
+       </div>
+       <br>
+       <h2>Available at:</h2>
+        <p>${specificBoardGame.place}</p>
+        <br>
+       <p class="describe">${specificBoardGame.description}</p>
+        </div>
      
             
         </article>
+        
         `;
 
     document.querySelector('#select-boardGame').innerHTML = htmlTemplate;
@@ -312,6 +310,20 @@ function appendBoardGameDetails(id) {
 
 
 //FILTER//
+function Vestergade() {
+    _boardGameRef.where("place", "array-contains", "Vestergade").onSnapshot(function (snapshotData) {
+        _boardGames = [];
+        snapshotData.forEach(function (doc) {
+            let boardGame = doc.data();
+            boardGame.id = doc.id;
+            _boardGames.push(boardGame);
+        });
+
+        appendBoardGamesAll(_boardGames);
+    });
+}
+
+
 
 function place1() {
     _boardGameRef.where("place", "array-contains", "Vestergade").onSnapshot(function (snapshotData) {
@@ -380,3 +392,83 @@ function orderByPlayers() {
 
 orderByPlayers();
 */
+
+//DROPDOWN//
+var x, i, j, l, ll, selElmnt, a, b, c;
+/*look for any elements with the class "custom-select":*/
+x = document.getElementsByClassName("custom-select");
+l = x.length;
+for (i = 0; i < l; i++) {
+    selElmnt = x[i].getElementsByTagName("select")[0];
+    ll = selElmnt.length;
+    /*for each element, create a new DIV that will act as the selected item:*/
+    a = document.createElement("DIV");
+    a.setAttribute("class", "select-selected");
+    a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+    x[i].appendChild(a);
+    /*for each element, create a new DIV that will contain the option list:*/
+    b = document.createElement("DIV");
+    b.setAttribute("class", "select-items select-hide");
+    for (j = 1; j < ll; j++) {
+        /*for each option in the original select element,
+        create a new DIV that will act as an option item:*/
+        c = document.createElement("DIV");
+        c.innerHTML = selElmnt.options[j].innerHTML;
+        c.addEventListener("click", function (e) {
+            /*when an item is clicked, update the original select box,
+            and the selected item:*/
+            var y, i, k, s, h, sl, yl;
+            s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+            sl = s.length;
+            h = this.parentNode.previousSibling;
+            for (i = 0; i < sl; i++) {
+                if (s.options[i].innerHTML == this.innerHTML) {
+                    s.selectedIndex = i;
+                    h.innerHTML = this.innerHTML;
+                    y = this.parentNode.getElementsByClassName("same-as-selected");
+                    yl = y.length;
+                    for (k = 0; k < yl; k++) {
+                        y[k].removeAttribute("class");
+                    }
+                    this.setAttribute("class", "same-as-selected");
+                    break;
+                }
+            }
+            h.click();
+        });
+        b.appendChild(c);
+    }
+    x[i].appendChild(b);
+    a.addEventListener("click", function (e) {
+        /*when the select box is clicked, close any other select boxes,
+        and open/close the current select box:*/
+        e.stopPropagation();
+        closeAllSelect(this);
+        this.nextSibling.classList.toggle("select-hide");
+        this.classList.toggle("select-arrow-active");
+    });
+}
+function closeAllSelect(elmnt) {
+    /*a function that will close all select boxes in the document,
+    except the current select box:*/
+    var x, y, i, xl, yl, arrNo = [];
+    x = document.getElementsByClassName("select-items");
+    y = document.getElementsByClassName("select-selected");
+    xl = x.length;
+    yl = y.length;
+    for (i = 0; i < yl; i++) {
+        if (elmnt == y[i]) {
+            arrNo.push(i)
+        } else {
+            y[i].classList.remove("select-arrow-active");
+        }
+    }
+    for (i = 0; i < xl; i++) {
+        if (arrNo.indexOf(i)) {
+            x[i].classList.add("select-hide");
+        }
+    }
+}
+/*if the user clicks anywhere outside the select box,
+then close all select boxes:*/
+document.addEventListener("click", closeAllSelect);

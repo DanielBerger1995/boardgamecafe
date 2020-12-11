@@ -10,3 +10,4 @@ const _firebaseConfig = {
 firebase.initializeApp(_firebaseConfig);
 const _db = firebase.firestore();
 const userRef = _db.collection("users");
+
