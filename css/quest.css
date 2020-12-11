@@ -3,12 +3,10 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
+    box-sizing: border-box;/* 
 body {
     overflow: hidden;
-}
+} */
 
 #bigWrapper {
     -webkit-transition: all 1s ease-in-out;
@@ -17,6 +15,13 @@ body {
   -o-transition: all 1s ease-in-out;
   transition: all 1s ease-in-out;
   position: relative;
+}
+
+#blackbox {
+    width: 100vw;
+    height: 100vh;
+    display: inline-block;
+    background-color: #000;
 }
 
 #anchor {
