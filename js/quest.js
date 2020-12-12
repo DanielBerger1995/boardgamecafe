@@ -73,6 +73,16 @@ _videoGameRef.where("genre", "==", "rs").onSnapshot(snapshotData => {
 
 });
 
+_boardGameRef.where("match", "==", "rs").onSnapshot(snapshotData => {
+    _boardRs = [];
+    snapshotData.forEach(doc => {
+        let boardGame = doc.data();
+        boardGame.id = doc.id;
+        _boardRs.push(boardGame);
+    });
+
+});
+
 /* ROLEPLAYING TEAM */
 
 _videoGameRef.where("genre", "==", "rt").onSnapshot(snapshotData => {
@@ -85,9 +95,19 @@ _videoGameRef.where("genre", "==", "rt").onSnapshot(snapshotData => {
 
 });
 
+_boardGameRef.where("match", "==", "rt").onSnapshot(snapshotData => {
+    _boardRt = [];
+    snapshotData.forEach(doc => {
+        let boardGame = doc.data();
+        boardGame.id = doc.id;
+        _boardRt.push(boardGame);
+    });
+
+});
+
 /* STRATEGY SOLO */
 
-_videoGameRef.where("genre", "==", "rs").onSnapshot(snapshotData => {
+_videoGameRef.where("genre", "==", "ss").onSnapshot(snapshotData => {
     _strategySolo = [];
     snapshotData.forEach(doc => {
         let videoGame = doc.data();
@@ -97,14 +117,34 @@ _videoGameRef.where("genre", "==", "rs").onSnapshot(snapshotData => {
 
 });
 
+_boardGameRef.where("match", "==", "ss").onSnapshot(snapshotData => {
+    _boardSs = [];
+    snapshotData.forEach(doc => {
+        let boardGame = doc.data();
+        boardGame.id = doc.id;
+        _boardSs.push(boardGame);
+    });
+
+});
+
 /* STRATEGY TEAM */
 
-_videoGameRef.where("genre", "==", "rt").onSnapshot(snapshotData => {
+_videoGameRef.where("genre", "==", "st").onSnapshot(snapshotData => {
     _strategyTeam = [];
     snapshotData.forEach(doc => {
         let videoGame = doc.data();
         videoGame.id = doc.id;
         _strategyTeam.push(videoGame);
+    });
+
+});
+
+_boardGameRef.where("match", "==", "st").onSnapshot(snapshotData => {
+    _boardSt = [];
+    snapshotData.forEach(doc => {
+        let boardGame = doc.data();
+        boardGame.id = doc.id;
+        _boardSt.push(boardGame);
     });
 
 });
