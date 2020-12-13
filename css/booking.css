@@ -26,6 +26,23 @@
      opacity: 1;
 }
 
+.booking_blur_curtain {
+     position: fixed;
+     z-index: 1;
+     width: 100%;
+     height: 100vh;
+     background-color: black;
+     filter: opacity(0);
+     display: none;
+     top: 0;
+     left: 0;
+}
+
+.booking_blur_curtain.active {
+     display: block;
+     filter: opacity(.75);
+}
+
 
 #firebaseui-auth-container {
      width: 100%;
@@ -77,9 +94,10 @@
      font-family: 'Poppins',
           sans-serif;
      text-align: center;
-     color: #F7A202;
-     font-size: 26px;
+     color: #f2f3f4;
+     font-size: 24px;
      margin-top: 30px;
+     font-weight: 700;
 }
 
 .booking>div {
@@ -91,7 +109,7 @@
      margin-top: 5px;
      background-color: #242424;
      overflow: hidden;
-
+     position: relative;
 }
 
 .booking div.active {
@@ -99,11 +117,11 @@
 }
 
 .booking>div h3 {
-     color: #F7A202;
-     font-size: 16px;
+     color: #f2f3f4;
+     font-size: 18px;
      padding-left: 10px;
      padding-top: 10px;
-     font-weight: 400;
+     font-weight: 600;
 }
 
 .booking>div .content {
@@ -152,9 +170,6 @@
      color: #f2f3f4;
 }
 
-.booking>div:nth-of-type(3) button {
-     width: 150px;
-}
 
 .booking>div:nth-of-type(2) button {
      margin-left: 50%;
@@ -170,6 +185,7 @@
 
 .booking>div .content div label {
      font-size: 14px;
+     color: #f2f3f4;
 }
 
 .booking>div .content div:nth-of-type(5) {
@@ -181,16 +197,38 @@
 }
 
 .booking>div .content div select {
-     width: 150px;
-     height: 35px;
-     background-color: #242424;
+     width: 160px;
+     height: 40px;
+     background-color: #333333;
      outline: none;
-     border-radius: 5px;
-     border-bottom-left-radius: 0;
-     border-bottom-right-radius: 0;
-     border: 1px solid white;
-     color: white;
+     border-radius: 8px;
+     color: #f2f3f4;
      padding-left: 10px;
+     border: none;
+}
+
+.booking>div .content div select:hover {
+     cursor: pointer;
+}
+
+.booking>div .content div input#dates {
+     width: 160px;
+     height: 40px;
+     background-color: #333333;
+     outline: none;
+     border-radius: 8px;
+     color: #f2f3f4;
+     padding-left: 10px;
+     border-width: 1px;
+     border: none;
+}
+
+.booking>div .content div input#dates[type="date"i] {
+     color: #f2f2f2;
+}
+
+.booking>div .content div input#dates:hover {
+     cursor: pointer;
 }
 
 .booking>div .content div select option {
@@ -236,15 +274,6 @@
      border-radius: 10px;
      padding-left: 10px;
      color: white;
-     transition: all .3s ease;
-}
-
-.booking>div .content .searchbar-box input:focus {
-     border-color: #F7A202;
-}
-
-.booking>div .content .searchbar-box input:focus~i {
-     color: #F7A202;
 }
 
 .booking>div .content .searchbar-box .search-results {
@@ -309,6 +338,44 @@
      height: 80px;
 }
 
+#dice_booking {
+     position: absolute;
+     width: 100%;
+     height: 100%;
+     top: 50%;
+     left: 0;
+     transform: translateY(-50%);
+     display: none;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+}
+
+#dice_booking.visible {
+     display: flex;
+}
+
+#dice_booking h2 {
+     margin-bottom: 50px;
+     color: #f2f3f4;
+     text-align: center;
+     font-size: 24px;
+     font-weight: 700;
+}
+
+#dice_booking div {
+     width: 100%;
+     height: 150px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+
+#dice_booking img {
+     height: 100%;
+     object-fit: contain;
+}
+
 nav {
      width: 100%;
      height: 3vh;
@@ -326,9 +393,10 @@ nav .account-details {
 }
 
 .account-details p {
-     color: rgba(255, 255, 255, 0.6);
+     color: #f2f3f4;
      margin-right: 10px;
      line-height: 3vh;
+     font-size: 14px;
 }
 
 .account-details p:hover {
@@ -372,45 +440,50 @@ nav .account-details {
      width: 100%;
      height: 100%;
      object-fit: cover;
-     object-position: center top;
+     object-position: center;
 }
 
 .bgi-booking .gradient {
      width: 100%;
-     height: 30vh;
-     background: linear-gradient(180deg, #24242400 0%, #242424 95%, #242424 100%);
+     height: 5vh;
+     background: linear-gradient(180deg, #00000000 0%, #00000000 30%, #242424 100%);
      position: absolute;
      bottom: 0;
      left: 0;
+
 }
 
 .booking-table-box {
-     width: 370px;
-     height: 370px;
-     border: 5px solid white;
      position: absolute;
-     top: 50%;
-     left: 50%;
-     border-radius: 5px;
-     transform: translate(-50%, -50%);
+     top: 30%;
+     left: 5%;
      font-family: 'Poppins', sans-serif;
      display: flex;
      flex-direction: column;
      justify-content: space-between;
-     align-items: center;
+     align-items: flex-start;
 }
 
 .booking-table-box h2 {
-     text-align: center;
-     width: 80%;
-     font-size: 26px;
+     width: 40%;
+     font-size: 32px;
+     font-weight: 700;
      color: white;
      padding-top: 60px;
 }
 
+.booking-table-box p {
+     width: 30%;
+     font-size: 18px;
+     font-weight: 400;
+     color: #f2f3f4;
+     padding-top: 20px;
+     padding-bottom: 20px;
+}
+
 .booking-table-box button {
-     width: 100%;
-     height: 50px;
+     width: 240px;
+     height: 44px;
      outline: none;
      border: none;
      font-size: 20px;
@@ -421,7 +494,47 @@ nav .account-details {
 
 .booking-table-box button:hover {
      cursor: pointer;
-     box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.75);
+     background-color: #242424;
+     color: #f2f3f4;
+}
+
+
+.booking>div a.back_arrow_booking {
+     position: absolute;
+     top: 0;
+     left: 50%;
+     transform: translateX(-50%);
+     margin: 0;
+     width: fit-content;
+     color: #f2f3f4;
+
+}
+
+.booking>div a.back_arrow_booking:hover {
+     cursor: default;
+}
+
+.booking>div a.back_arrow_booking i {
+     transform: scaleY(.4) scaleX(1.2);
+     font-size: 40px;
+     transition: all .3s ease;
+}
+
+.booking>div a.back_arrow_booking i:hover {
+     cursor: pointer;
+     color: #aa1919;
+}
+
+.open-table {
+     padding-left: 10px;
+}
+
+.open-table input {
+     background-color: transparent;
+}
+
+.open-table label {
+     padding-left: 5px;
 }
 
 #open_tables {
@@ -430,23 +543,92 @@ nav .account-details {
      font-family: 'Poppins', sans-serif;
 }
 
-#open_tables h3 {
-     color: white;
+#open_tables>h3 {
+     color: #f2f3f4;
      padding-top: 100px;
      padding-left: 60px;
-     font-size: 30px;
+     font-size: 24px;
 }
 
 .open_tables_container {
      width: 100%;
      display: flex;
-     flex-direction: column;
-     align-items: center;
+     flex-wrap: wrap;
+
 }
 
 .open-table-box {
-     width: 100px;
-     height: 100px;
-     background-color: #fff;
-     margin: 50px;
+     width: 820px;
+     height: 420px;
+     background-color: #333333;
+     margin: 0 60px;
+     margin-top: 60px;
+     display: flex;
+}
+
+.open-table-box img {
+     width: 385px;
+     height: 100%;
+     object-fit: cover;
+}
+
+.open-table-box .info-box {
+     width: 367px;
+     margin: 0 auto;
+     height: 100%;
+     color: #f2f3f4;
+}
+
+.info-box span {
+     font-size: 14px;
+     background-color: #aa1919;
+     padding: 2px 14px;
+     border-radius: 8px;
+     margin-left: 5px;
+}
+
+.info-box span:nth-of-type(1) {
+     margin-left: 0;
+}
+
+.info-box h3 {
+     color: #f2f3f4;
+     font-size: 24px;
+     padding: 18px 0;
+     font-weight: 700;
+}
+
+.info-box h4 {
+     color: #f2f3f4;
+     font-size: 24px;
+     padding-top: 10px;
+     font-weight: 600;
+}
+
+.info-box p {
+     color: #f2f3f4;
+     font-size: 18px;
+     font-weight: 400;
+     max-height: 132px;
+     height: 132px;
+     overflow: hidden;
+}
+
+.info-box button {
+     width: 160px;
+     height: 40px;
+     background-color: #aa1919;
+     color: #f2f3f4;
+     font-size: 18px;
+     transition: all .3s ease;
+     outline: none;
+     font-weight: 600;
+     border: none;
+     border-radius: 8px;
+     margin-top: 20px;
+}
+
+.info-box button:hover {
+     cursor: pointer;
+     background-color: #242424;
 }

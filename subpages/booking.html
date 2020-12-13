@@ -23,34 +23,8 @@
                     <form>
                     <div class="content">
                          <div>
-                              <label for="seats">Seats:</label>
                               <select name="seats" id="seats">
-                                   <option value="" disabled selected>Seats</option>
-                                   <option value="1">1</option>
-                                   <option value="2">2</option>
-                                   <option value="3">3</option>
-                                   <option value="4">4</option>
-                              </select>
-                         </div>
-                         <div>
-                              <label for="time">Time: (h)</label>
-                              <select name="time" id="timetable">
-                                   <option value="1">1 </option>
-                                   <option value="2">2 </option>
-                                   <option value="3">3 </option>
-                                   <option value="4">4 </option>
-                              </select>
-                         </div>
-                         <div>
-                              <label for="cafe">Cafe:</label>
-                              <select name="cafe" id="cafes">
-                                   <option value="Vestergade">Vestergade</option>
-                                   <option value="Fredensgade">Fredensgade</option>
-                              </select>
-                         </div>
-                          <div>
-                              <label for="date">Date: (dd)</label>
-                              <select name="date" id="dates">
+                                   <option value="" disabled selected>Seats:</option>
                                    <option value="1">1</option>
                                    <option value="2">2</option>
                                    <option value="3">3</option>
@@ -59,43 +33,40 @@
                                    <option value="6">6</option>
                                    <option value="7">7</option>
                                    <option value="8">8</option>
-                                   <option value="9">9</option>
+                                    <option value="9">9</option>
                                    <option value="10">10</option>
-                                   <option value="11">11</option>
-                                   <option value="12">12</option>
-                                   <option value="13">13</option>
-                                   <option value="14">14</option>
-                                   <option value="15">15</option>
-                                   <option value="16">16</option>
-                                   <option value="17">17</option>
-                                   <option value="18">18</option>
-                                   <option value="19">19</option>
-                                   <option value="20">20</option>
-                                   <option value="21">21</option>
-                                   <option value="22">22</option>
-                                   <option value="23">23</option>
-                                   <option value="24">24</option>
-                                   <option value="25">25</option>
-                                   <option value="26">26</option>
-                                   <option value="27">27</option>
-                                   <option value="28">28</option>
-                                   <option value="29">29</option>
-                                   <option value="30">30</option>
-                                   <option value="31">31</option>
-
                               </select>
                          </div>
+                         <div>
+                              <select name="time" id="timetable">
+                                   <option value="" disabled selected>Time: (h)</option>
+                                   <option value="1">1 </option>
+                                   <option value="2">2 </option>
+                                   <option value="3">3 </option>
+                                   <option value="4">4 </option>
+                              </select>
+                         </div>
+                         <div>
+                              <select name="cafe" id="cafes">
+                                   <option value="" disabled selected>Cafe:</option>
+                                   <option value="Vestergade">Vestergade</option>
+                                   <option value="Fredensgade">Fredensgade</option>
+                              </select>
+                         </div>
+                          <div>
+                                   <input type="date" id="dates" required pattern="\d{4}-\d{2}-\d{2}">
+                         </div>
                          <div class="open-table">
-                         <input type="checkbox">
-                         <label for="checkbox">Is the table open?</label>
+                              <input type="checkbox">
+                              <label for="checkbox">Is the table open?</label>
                     </div>
                     </div>
-               
                     <button>Next</button>
                     </form>
                </div>
                <div>
                     <h3>Games:</h3>
+                     <a class="back_arrow_booking" href="#"><i class="fas fa-chevron-down"></i></a>
                     <form>
                       <div class="content">
                          <div class="searchbar-box">
@@ -113,25 +84,35 @@
                          </div>
                     </div>
                     <span>
-                    <a href="#"> < Back</a>
-                    <button>Finish</button>
+                   
+                    <button class="finish_booking">Finish</button>
                     </form>
                </span>
+               </div>
+               <div id="dice_booking">
+                    <h2>Creating your table...</h2>
+               <div>
+                    <img src="../images/dicegif3.gif">
+               </div>
                </div>
           </div>
      </div>
      <nav>
           
           <div class="account-details">
-               <p>Lorem, ipsum.</p>                    
+               <p></p>                    
                <button onclick="logout()"><i class="fas fa-sign-out-alt"></i>Log out</button>
           </div>
      </nav>
      <div class="bgi-booking">
-          <img src="../images/bookingBgcImage.png" alt="">
+          <img src="../images/bookingBgcImage.jpg" alt="">
           <div class="gradient"></div>
           <div class="booking-table-box">
                <h2>Do you want to book a table at our cafe?</h2>
+               <p>You can chose date, amount of players or a game of your desire.
+                    If you would like to play and meet new poeple consider opening your table
+                    or browse through already created tables.
+               </p>
                <button class="log-trigger">Book a table</button>
           </div>
      </div>
@@ -139,13 +120,23 @@
           <h3>Open tables:</h3>
           <div class="open_tables_container">
                <div class="open-table-box">
-                    
+                    <img src="../images/bookingBgcImage.jpg">
+                    <div class="info-box">
+                         <h3>Game title</h3>
+                         <span><i class="fas fa-map-marker-alt"></i> Vestergade</span>
+                         <span><i class="far fa-calendar-alt"></i> 15/12/2020</span>
+                         <span><i class="fas fa-user-friends"></i> 1/4</span>
+                         <h4>Duration: 2 hours</h4>
+                         <h4>Description:</h4>
+                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste at animi natus quidem adipisci quis consequuntur vel unde ipsum, quae commodi cum? Ad eligendi, inventore quidem repudiandae itaque odio facilis architecto, natus tempore quisquam tenetur qui ea soluta nesciunt, debitis facere. Beatae ut similique laboriosam inventore eius fugiat sunt assumenda.</p>
+                         <button class="join-table">Join table</button>
+                    </div>
                </div>
-                <div class="open-table-box">
-                    
-               </div>
+               
           </div>
      </section>
+     <div class="booking_blur_curtain"></div>
+     
 
       <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
