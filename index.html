@@ -18,8 +18,8 @@
     <div id="opacityCover" onclick="closeDetails()"></div>
     <div class="all">
 
-        <button onclick="Vestergade(Vestergade);place11()">Place 1</button>
-        <button onclick="place2()">Place 2</button>
+        <button onclick="rating()">clcik shit</button>
+        <button onclick="place1()">Place 2</button>
         <button onclick="strategy(strategy)">Strategy</button>
         <a href="subpages/booking.html">Book table section</a>
         <a href="subpages/quest.html">Quest</a>
@@ -43,8 +43,43 @@
 
 
 
-        <section class="dropdownbar">
+        <section class="dropdownbar" id="dropDown">
             <div class="barsplit">
+                <div>
+                    <div class="dropdown">
+                        <button class="dropbtn">Location</button>
+                        <div class="dropdown-content">
+                            <a href="#dropDown" onclick="Vestergade()">Vestergade</a>
+                            <a href="#dropDown" onclick="Fredensgade()">Fredensgade</a>
+
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">Genre</button>
+                        <div class="dropdown-content">
+                            <a href="#dropDown">Halp</a>
+
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">Players</button>
+                        <div class="dropdown-content">
+                            <a href="#dropDown" onclick="oneplayer()">1 player</a>
+                            <a href="#dropDown" onclick="twoplayer()">2-3 players</a>
+                            <a href="#dropDown" onclick="threeplayer()">3-6 players</a>
+                            <a href="#dropDown" onclick="sixplayer()">6+ players</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">Duration</button>
+                        <div class="dropdown-content">
+                            <a href="#dropDown" onclick="LessthanThrity()">Less than 30 mins</a>
+                            <a href="#dropDown" onclick="MorethanThrity()">30-60 mins</a>
+                            <a href="#dropDown" onclick="MorethanSixty()">More than 60 mins</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- 
                 <div class="cake">
                     <div class="custom-select">
                         <select id="location">
@@ -91,6 +126,9 @@
                         </select>
                     </div>
                 </div>
+                -->
+
+
 
                 <input type="search" placeholder="Search" onkeyup="search(this.value)">
 

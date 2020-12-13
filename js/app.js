@@ -28,17 +28,14 @@ function appendBoardGamesPopular(boardGames) {
     for (let boardGame of boardGames) {
         htmlTemplate += `
      <a href="#select-boardGame" onclick="appendBoardGameDetails('${boardGame.id}');openDetails()"> <article>
-      <img src="${boardGame.image}">
+      <img class="imgwrappy" src="${boardGame.image}">
       <div class="details">
-    <div>
+   <div class="lefty">
         <h2>${boardGame.name}</h2>
-        
-        <br>
-        <h3>${boardGame.place}</h3>
-        <div class="icontext"> <img src="images/players.svg" class="icons">${boardGame.players} players </div>
-      <div class="icontext">  <img src="images/clock.svg" class="icons"> ${boardGame.time}</div>
-      </div>
-       
+       <div>
+         <div class="icontext"> <img src="images/players.svg" class="icons">${boardGame.playersmin}-${boardGame.playersmax} players </div>
+      <div class="icontext">  <img src="images/clock.svg" class="icons"> ${boardGame.timestart}-${boardGame.timeend} mins</div>
+      </div></div>
 
         <div>
       <div class="genre"> <p>${boardGame.genre}</p></div>
@@ -76,7 +73,7 @@ function search(searchValue) {
 //ALL//
 
 
-_boardGameRef.orderBy("rating", "desc").limit(30).onSnapshot(snapshotData => {
+_boardGameRef.orderBy("rating", "desc").onSnapshot(snapshotData => {
     _boardGames = [];
     snapshotData.forEach(doc => {
         let boardGame = doc.data();
@@ -94,14 +91,14 @@ function appendBoardGamesAll(boardGames) {
     for (let boardGame of boardGames) {
         htmlTemplate += `
   <a href="#select-boardGame" onclick="appendBoardGameDetails('${boardGame.id}');openDetails()"> <article class="allgames_wrapper">
-      <img src="${boardGame.image}">
+      <img class="imgwrappy" src="${boardGame.image}">
       <div class="details2">
-    <div>
+    <div class="lefty">
         <h2>${boardGame.name}</h2>
-        <br>
-        <div class="icontext"> <img src="images/players.svg" class="icons">${boardGame.players} players </div>
-      <div class="icontext">  <img src="images/clock.svg" class="icons"> ${boardGame.time}</div>
-      </div>
+       <div>
+         <div class="icontext"> <img src="images/players.svg" class="icons">${boardGame.playersmin}-${boardGame.playersmax} players </div>
+      <div class="icontext">  <img src="images/clock.svg" class="icons"> ${boardGame.timestart}-${boardGame.timeend} mins</div>
+      </div></div>
        
 
         <div>
@@ -260,7 +257,7 @@ function appendBoardGameDetails(id) {
     htmlTemplate += `
         <article>
         <div class="closebutton" onclick="closeDetails()"></div>
-     <div class="specificimage"><img src="${specificBoardGame.image}" alt="Event Photo"></div>
+    <img class="specificimage" src="${specificBoardGame.image}" alt="Event Photo">
          
             
             
@@ -270,8 +267,8 @@ function appendBoardGameDetails(id) {
     <div class="leftside">
         <h2 class="boardgametitle">${specificBoardGame.name}</h2>
         <br>
-        <div class="icontext"> <img src="images/players.svg" class="icons">${specificBoardGame.players} players </div>
-      <div class="icontext">  <img src="images/clock.svg" class="icons"> ${specificBoardGame.time}</div>
+         <div class="icontext"> <img src="images/players.svg" class="icons">${specificBoardGame.playersmin}-${specificBoardGame.playersmax} players </div>
+      <div class="icontext">  <img src="images/clock.svg" class="icons"> ${specificBoardGame.timestart}-${specificBoardGame.timeend} mins</div>
       </div>
        
 
@@ -283,8 +280,8 @@ function appendBoardGameDetails(id) {
        </div>
        <br>
        <h2>Available at:</h2>
-        <p>${specificBoardGame.place[`0`]}</p>
-          <p class="shelf">${specificBoardGame.place[`1`]}</p>
+        <p class="try1">${specificBoardGame.place}</p>
+       
         <br>
        <p class="describe">${specificBoardGame.description}</p>
         </div>
@@ -310,8 +307,23 @@ function appendBoardGameDetails(id) {
 
 
 //FILTER//
-function Vestergade(Vestergade) {
+
+
+function Vestergade() {
     _boardGameRef.where("place", "array-contains", "Vestergade").onSnapshot(function (snapshotData) {
+        _boardGames = [];
+        snapshotData.forEach(function (doc) {
+            let boardGame = doc.data();
+            boardGame.id = doc.id;
+            _boardGames.push(boardGame);
+        });
+
+        appendBoardGamesAll(_boardGames);
+    });
+}
+
+function Fredensgade() {
+    _boardGameRef.where("place", "array-contains", "Fredensgade").onSnapshot(function (snapshotData) {
         _boardGames = [];
         snapshotData.forEach(function (doc) {
             let boardGame = doc.data();
@@ -325,8 +337,9 @@ function Vestergade(Vestergade) {
 
 
 
-function place1() {
-    _boardGameRef.where("place", "array-contains", "Vestergade").onSnapshot(function (snapshotData) {
+
+function oneplayer() {
+    _boardGameRef.where("playersmin", "<=", 1).onSnapshot(function (snapshotData) {
         _boardGames = [];
         snapshotData.forEach(function (doc) {
             let boardGame = doc.data();
@@ -334,9 +347,90 @@ function place1() {
             _boardGames.push(boardGame);
         });
 
-        appendBoardGamesPopular(_boardGames);
+        appendBoardGamesAll(_boardGames);
     });
 }
+
+function twoplayer() {
+    _boardGameRef.where("playersmin", "==", 2).onSnapshot(function (snapshotData) {
+        _boardGames = [];
+        snapshotData.forEach(function (doc) {
+            let boardGame = doc.data();
+            boardGame.id = doc.id;
+            _boardGames.push(boardGame);
+        });
+
+        appendBoardGamesAll(_boardGames);
+    });
+}
+
+function threeplayer() {
+    _boardGameRef.where("playersmin", "==", 3).onSnapshot(function (snapshotData) {
+        _boardGames = [];
+        snapshotData.forEach(function (doc) {
+            let boardGame = doc.data();
+            boardGame.id = doc.id;
+            _boardGames.push(boardGame);
+        });
+
+        appendBoardGamesAll(_boardGames);
+    });
+}
+
+function sixplayer() {
+    _boardGameRef.where("playersmax", ">=", 6).onSnapshot(function (snapshotData) {
+        _boardGames = [];
+        snapshotData.forEach(function (doc) {
+            let boardGame = doc.data();
+            boardGame.id = doc.id;
+            _boardGames.push(boardGame);
+        });
+
+        appendBoardGamesAll(_boardGames);
+    });
+}
+
+function LessthanThrity() {
+    _boardGameRef.where("timeend", "<=", 30).onSnapshot(function (snapshotData) {
+        _boardGames = [];
+        snapshotData.forEach(function (doc) {
+            let boardGame = doc.data();
+            boardGame.id = doc.id;
+            _boardGames.push(boardGame);
+        });
+
+        appendBoardGamesAll(_boardGames);
+    });
+}
+
+function MorethanThrity() {
+    _boardGameRef.where("timestart", "==", 30).where("timeend", "<=", 60).onSnapshot(function (snapshotData) {
+        _boardGames = [];
+        snapshotData.forEach(function (doc) {
+            let boardGame = doc.data();
+            boardGame.id = doc.id;
+            _boardGames.push(boardGame);
+        });
+
+        appendBoardGamesAll(_boardGames);
+    });
+}
+
+function MorethanSixty() {
+    _boardGameRef.where("timestart", ">=", 60).onSnapshot(function (snapshotData) {
+        _boardGames = [];
+        snapshotData.forEach(function (doc) {
+            let boardGame = doc.data();
+            boardGame.id = doc.id;
+            _boardGames.push(boardGame);
+        });
+
+        appendBoardGamesAll(_boardGames);
+    });
+}
+
+
+
 
 function place11() {
     _boardGameRef.orderBy("players").where("place", "==", "1").onSnapshot(function (snapshotData) {
@@ -365,7 +459,7 @@ function place2() {
 }
 
 function strategy(strategy) {
-    _boardGameRef.where("genre", "==", "strategy").onSnapshot(function (snapshotData) {
+    _boardGameRef.where("genre", "==", "Strategy").onSnapshot(function (snapshotData) {
         _boardGames = [];
         snapshotData.forEach(function (doc) {
             let boardGame = doc.data();
@@ -479,15 +573,3 @@ console.log(option);
 
 
 
-function Vestergade() {
-    _boardGameRef.where("place", "array-contains", "Vestergade").onSnapshot(function (snapshotData) {
-        _boardGames = [];
-        snapshotData.forEach(function (doc) {
-            let boardGame = doc.data();
-            boardGame.id = doc.id;
-            _boardGames.push(boardGame);
-        });
-
-        appendBoardGamesAll(_boardGames);
-    });
-}
