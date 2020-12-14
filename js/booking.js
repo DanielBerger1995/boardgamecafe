@@ -223,7 +223,7 @@ function appendOpenTablesAll(openTable) {
                          <span><i class="fas fa-user-friends"></i> 1/${openTable.seats}</span>
                          <h4>Duration: ${openTable.hours} hours</h4>
                          <h4>Description:</h4>
-                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste at animi natus quidem adipisci quis consequuntur vel unde ipsum, quae commodi cum? Ad eligendi, inventore quidem repudiandae itaque odio facilis architecto, natus tempore quisquam tenetur qui ea soluta nesciunt, debitis facere. Beatae ut similique laboriosam inventore eius fugiat sunt assumenda.</p>
+                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quidem  fugiat sunt assumenda.</p>
                          <button class="join-table">Join table</button>
                     </div>
                </div>
@@ -236,7 +236,7 @@ function appendOpenTablesAll(openTable) {
 //append user email
 
 function appendEamil(user){
-  const emailPlaceholder = document.querySelector(".account-details>p");
+  const emailPlaceholder = document.querySelector(".account-details p");
   let = userEamil = user.email;
   emailPlaceholder.innerHTML = `${userEamil}`;
 }

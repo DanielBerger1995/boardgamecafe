@@ -378,12 +378,28 @@
 
 nav {
      width: 100%;
-     height: 3vh;
+     height: 7vh;
      background-color: #242424;
      display: flex;
-     justify-content: flex-end;
+     justify-content: space-between;
      align-items: center;
      font-family: 'Poppins', sans-serif;
+     position: fixed;
+     z-index: 100;
+}
+
+nav a:nth-child(1) {
+     display: flex;
+     align-items: center;
+     justify-content: flex-start;
+     width: 3%;
+     margin-left: 25px;
+     height: 100%;
+}
+
+nav img {
+     height: 100%;
+     object-fit: contain;
 }
 
 nav .account-details {
@@ -392,8 +408,21 @@ nav .account-details {
      margin-left: 10px;
 }
 
-.account-details p {
+nav .account-details a {
+     width: fit-content;
+     margin: 0;
+     margin: 0 10px;
+     transition: all .3s ease;
      color: #f2f3f4;
+     text-decoration: none;
+}
+
+nav .account-details a:hover {
+     color: #AA1919;
+}
+
+.account-details p {
+     color: #aa1919;
      margin-right: 10px;
      line-height: 3vh;
      font-size: 14px;
@@ -411,6 +440,7 @@ nav .account-details {
      margin-left: 5px;
      line-height: 3vh;
      transition: all .2s ease;
+     font-size: 18px !;
 }
 
 .account-details button:hover {
@@ -432,7 +462,7 @@ nav .account-details {
 
 .bgi-booking {
      width: 100%;
-     height: 97vh;
+     height: 67vh;
      position: relative;
 }
 
@@ -440,7 +470,7 @@ nav .account-details {
      width: 100%;
      height: 100%;
      object-fit: cover;
-     object-position: center;
+     object-position: bottom left;
 }
 
 .bgi-booking .gradient {
@@ -455,7 +485,7 @@ nav .account-details {
 
 .booking-table-box {
      position: absolute;
-     top: 30%;
+     top: 10%;
      left: 5%;
      font-family: 'Poppins', sans-serif;
      display: flex;
@@ -558,8 +588,8 @@ nav .account-details {
 }
 
 .open-table-box {
-     width: 820px;
-     height: 420px;
+     width: 42%;
+     height: 370px;
      background-color: #333333;
      margin: 0 60px;
      margin-top: 60px;
@@ -567,14 +597,14 @@ nav .account-details {
 }
 
 .open-table-box img {
-     width: 385px;
+     width: 45%;
      height: 100%;
      object-fit: cover;
 }
 
 .open-table-box .info-box {
-     width: 367px;
-     margin: 0 auto;
+     width: 52%;
+     margin-left: auto;
      height: 100%;
      color: #f2f3f4;
 }
@@ -582,13 +612,17 @@ nav .account-details {
 .info-box span {
      font-size: 14px;
      background-color: #aa1919;
-     padding: 2px 14px;
+     padding: 2px 12px;
      border-radius: 8px;
-     margin-left: 5px;
 }
 
 .info-box span:nth-of-type(1) {
      margin-left: 0;
+}
+
+.info-box span:nth-of-type(3) {
+     margin-left: 0;
+     margin-top: 15px;
 }
 
 .info-box h3 {
@@ -609,8 +643,8 @@ nav .account-details {
      color: #f2f3f4;
      font-size: 18px;
      font-weight: 400;
-     max-height: 132px;
-     height: 132px;
+     max-height: 80px;
+     height: 80px;
      overflow: hidden;
 }
 
