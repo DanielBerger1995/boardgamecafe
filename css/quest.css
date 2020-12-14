@@ -6,9 +6,9 @@
     box-sizing: border-box;
 }
 
-/* body {
+body {
     overflow: hidden;
-} */
+}
 
 #bigWrapper {
     -webkit-transition: all 1s ease-in-out;
