@@ -158,10 +158,11 @@ function appendBoardGames(boardAs) {
     for (let boardGame of boardAs) {
         htmlTemplate += `
     <article>
-    <img src="${boardGame.image}">
+    <img class="img-container-quest" src="${boardGame.image}">
     <h2>${boardGame.name}</h2>
       </div>
       </article>
+      
     `;
     }
     document.querySelector('#lol-container').style.display = "flex";

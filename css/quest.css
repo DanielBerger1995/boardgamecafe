@@ -376,3 +376,156 @@ nav .account-details a {
 nav .account-details a:hover {
     color: #AA1919;
 }
+
+
+#lol-container>a>article {
+    font-size: 12px;
+    border-radius: 10px;
+    border: 0px solid;
+    width: 17vw;
+    height: 17vw;
+    margin-right: 1.5vw;
+    background-color: #2D2D2D;
+    overflow: hidden;
+
+}
+
+
+#lol-container>a>article:hover {
+    transform: scale(1.05);
+    height: 29vw;
+    transition: 0.4s ease-in-out;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+
+
+#lol-container>a>article>img {
+    width: 17vw;
+    height: 17vw;
+}
+
+.imgwrappy {
+    object-fit: cover;
+    width: 17vw;
+    height: 17vw;
+    overflow: hidden;
+}
+
+
+.details2 {
+
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.details {
+
+
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+
+
+}
+
+.lefty {
+
+    width: 60%;
+    height: 8.5vw;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+
+
+.genre {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 5px;
+    width: 5.2vw;
+    height: 2.1vw;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    background-color: #AA1919;
+}
+
+
+.rating {
+    font-size: 24px;
+    font-weight: 600;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 5px;
+    width: 5.2vw;
+    height: 5.2vw;
+    background-color: #AA1919;
+}
+
+.icons {
+    width: 1.5vw;
+    height: 1.5vw;
+    color: white;
+    margin-right: 10px;
+
+}
+
+.icontext {
+
+    display: flex;
+    margin-top: 10px;
+    height: 1.5vw;
+
+}
+
+.boook-table-quest {
+    display: flex;
+    margin: 0 auto;
+    margin-top: 100px;
+    margin-top: 64px;
+    transition: all 3s;
+    width: 250px;
+    letter-spacing: 2px;
+    border-radius: 8px;
+    font-family: 'Texturina', serif;
+    color: #ffb000;
+    font-size: 18px;
+    font-weight: 700;
+    text-shadow: 0 1px 3px #000;
+    text-align: center;
+    padding: 10px 0;
+    background: radial-gradient(circle, #aa1919, #aa1919);
+    border: 3px solid #ffb000;
+    box-shadow: inset 0px 0px 5px 3px rgba(1, 1, 1, 0.3);
+    position: relative;
+    text-decoration: none;
+    text-align: center;
+    justify-content: center;
+}
+
+.boook-table-quest:hover {
+    background: radial-gradient(circle, #e52b2b, #aa1919);
+    box-shadow: 0px 0 5px 5px rgba(255, 255, 255, 0.2)
+}
+
+.quest-header {
+    margin-top: 15vh;
+    text-align: center;
+    color: #f2f3f4;
+    font-size: 32px;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+}
+
+.img-container-quest {
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+}
